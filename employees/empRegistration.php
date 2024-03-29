@@ -41,7 +41,7 @@ require "../include/head.php";
         <input type="text" id="phone_no" name="phone_no" value=""><br>
 
         <label for="whatsapp_no">whastapp Number</label>
-        <input type="text" id="whatsapp_no" name="whastapp_no" value=""><br>
+        <input type="text" id="whatsapp_no" name="whatsapp_no" value=""><br>
 
         <label for="address">Address</label>
         <textarea id="Address" name="Address" rows="4" cols="50"></textarea><br><br>
@@ -103,6 +103,7 @@ require "../include/head.php";
 
         <button type="submit" name="submit" id="add_empw" value="Submit"> Add Employee</button>
     </form>
+
 
 
 
@@ -188,12 +189,13 @@ require "../include/head.php";
             $("#itemCreationForm").submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
+                console.log(formData);
                 $.ajax({
                     url: "insertdata/inemployee.php",
                     type: "POST",
                     data: formData,
-                    contentType: false,
                     processData: false,
+                    contentType: false,
                     success: function(data) {
                         console.log(data);
                         alert(data);
