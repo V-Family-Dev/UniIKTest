@@ -1,10 +1,10 @@
 <?php
 
 // Database connection
-$hostname = "127.0.0.1";
+$hostname = "localhost";
 $username = "root";
-$password = "ABandara2001";
-$dbname = "db_mlm";
+$password = "admin";
+$dbname = "vfam_uni";
 
 try {
     $conn = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
