@@ -1,5 +1,143 @@
 <?php
 
+
+//insert emp data
+
+function insettable($conn, $data)
+{
+
+    $first_name = test_input($data['first_name']);
+    $last_name = test_input($data['last_name']);
+    $nic = test_input($data['nic']);
+    $employee_no = test_input($data['employee_no']);
+    $reference_id = test_input($data['reference_id']);
+    $phone_no = test_input($data['phone_no']);
+    $whastapp_no = test_input($data['whastapp_no']);
+    $Address = test_input($data['Address']);
+    $postalCode = test_input($data['postalCode']);
+    $branchCode = test_input($data['branchCode']);
+    $accountHolderName = test_input($data['accountHolderName']);
+    $AccountNum = test_input($data['AccountNum']);
+
+
+    $valid = geterror($first_name, $last_name, $nic, $employee_no, $phone_no, $whastapp_no, $Address, $postalCode, $branchCode, $accountHolderName, $AccountNum);
+    if ($reference_id == "") {
+        $reference_id = NULL;
+    }
+
+    if ($valid['status'] === 'error') {
+        return $valid;
+    }
+    $sql = $conn->prepare("INSERT INTO `employee`( `employee_no`, `first_name`, `last_name`, `NIC`, `phone_no`, `whastapp_no`, `BankCode`, `Address`, `postcode`, `AccountNum`, `holderName`,`reference_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $sql->bind_param("sssssssissssss", $employee_no, $first_name, $last_name, $nic, $phone_no, $whastapp_no, $branchCode, $Address, $postalCode, $AccountNum, $accountHolderName, $reference_id);
+    $sql->execute();
+    $lastId = $sql->insert_id;
+    if ($sql->affected_rows > 0) {
+        $result = array("status" => "success", "message" => "Employee added successfully");
+    } else {
+        $result = array("status" => "error", "message" => "Failed to add employee");
+    }
+    $sql->close();
+    $conn->close();
+
+
+
+    return $result;
+}
+
+function geterror($first_name, $last_name, $nic, $employee_no,  $phone_no, $whatsapp_no, $Address, $postalCode, $branchCode, $accountHolderName, $AccountNum)
+{
+    if (empty($first_name)) {
+        return array("status" => "error", "message" => "First Name is required");
+    }
+    if (empty($last_name)) {
+        return array("status" => "error", "message" => "Last Name is required");
+    }
+    if (empty($nic)) {
+        return array("status" => "error", "message" => "NIC is required");
+    }
+    if (empty($employee_no)) {
+        return array("status" => "error", "message" => "Employee Number is required");
+    }
+
+    if (empty($phone_no)) {
+        return array("status" => "error", "message" => "Phone Number is required");
+    }
+    if (empty($whatsapp_no)) {
+        return array("status" => "error", "message" => "Whatsapp Number is required");
+    }
+    if (empty($Address)) {
+        return array("status" => "error", "message" => "Address is required");
+    }
+    if (empty($postalCode)) {
+        return array("status" => "error", "message" => "Postal Code is required");
+    }
+    if (empty($branchCode)) {
+        return array("status" => "error", "message" => "Branch Code is required");
+    }
+    if (empty($accountHolderName)) {
+        return array("status" => "error", "message" => "Account Holder Name is required");
+    }
+    if (empty($AccountNum)) {
+        return array("status" => "error", "message" => "Account Number is required");
+    }
+
+    return array("status" => "success", "message" => "All fields are valid");
+}
+
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+function provinces($conn)
+{
+    $sql = "SELECT * FROM provinces";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $provinces[] = $row;
+        }
+    }
+
+    return $provinces;
+}
+
+
+
+
+function getlocation($conn)
+{
+    $sql = "SELECT p.name_en,p.id, d.name_en,d.id,c.id, c.name_en,c.postcode FROM cities AS c INNER JOIN districts AS d ON c.district_id=d.id INNER JOIN provinces AS p ON p.id=d.province_id ORDER BY p.name_en, d.name_en, c.name_en";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $location[] = $row;
+        }
+    }
+
+    return $location;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // generate new employeenumber
 function getNewEmployeeNumber($conn)
 {
@@ -34,120 +172,3 @@ function getNewEmployeeNumber($conn)
         return 'USD0001';
     }
 }
-
-
-function getempId($conn)
-{
-    $sql = "SELECT employee_no FROM employee";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-       $empNumber=[];
-        while ($row = $result->fetch_assoc()) {
-           $empNumber[]=$row;
-        }
-    }
-
-    return $empNumber;
-}
-
-// validation and Sanitization 
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
-// add new emp
-function insertEmployee($conn, $firstName, $lastName, $nic, $employeeNumber, $refNumber, $primaryNumber, $secondNumber, $accountNum, $branchCode, $joindate, $address)
-{
-    // Prepare the SQL statement with placeholders
-    $stmt = $conn->prepare("INSERT INTO employee (first_name, last_name, NIC, employee_no,reference_id,phone_no,whastapp_no,AccountNum,BankCode,joined_date, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-    // Check if preparation is successful
-    if ($stmt === false) {
-        throw new Exception("Prepare statement failed: " . $conn->error);
-    }
-
-    // Bind parameters to the prepared statement
-    $stmt->bind_param("sssssiisiss", $firstName, $lastName, $nic, $employeeNumber, $refNumber, $primaryNumber, $secondNumber,$accountNum,$branchCode, $joindate, $address);
-
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "Data inserted successfully.";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    // Close the statement
-    $stmt->close();
-}
-
-// get all the emp details
-function getAllEmployees($conn)
-{
-    $sql = "SELECT * FROM employee";
-    $result = $conn->query($sql);
-
-    $employees = [];
-    if ($result) {
-        while ($row = $result->fetch_assoc()) {
-            $employees[] = $row;
-        }
-        $result->free();
-    } else {
-        // Handle error - the query failed
-    }
-
-    $conn->close();
-    return $employees;
-}
-
-// delete the emp
-function deleteEmployee($id, $conn)
-{
-    $sql = "UPDATE employee SET EmpStatus = 0 WHERE idEmployees = ?";
-
-    if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->close();
-        return true; // Indicate success
-    } else {
-        // Handle error - failed to prepare statement
-        return false; // Indicate failure
-    }
-}
-
-function gellAllbanckCode($conn)
-{
-    $sql = "SELECT bankcode,bankname from bankcodes;";
-
-    $result = $conn->query($sql);
-    $bankDetails = [];
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $bankDetails[] = $row;
-        }
-    }
-
-    return $bankDetails;
-}
-
-function gellAllbranchCode($conn)
-{
-    $sql = "SELECT branchcode,branchname from branchcodes;";
-
-    $result = $conn->query($sql);
-    $branchcodes = [];
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $branchcodes[] = $row;
-        }
-    }
-
-    return $branchcodes;
-}
-

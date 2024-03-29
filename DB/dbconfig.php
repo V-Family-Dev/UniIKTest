@@ -1,7 +1,7 @@
 <?php
 
 // Database connection
-$hostname = "127.0.0.1";
+$hostname = "127.0.0.1:3308";
 $username = "root";
 $password = "admin";
 $dbname = "vfam_uni";
@@ -21,4 +21,3 @@ if ($conn->connect_error) {
 // } catch(PDOException $e) {
 //     echo "Connection failed: " . $e->getMessage();
 // }
-?>
