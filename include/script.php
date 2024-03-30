@@ -9,7 +9,7 @@
               //console.log(provinceId);
 
               $.ajax({
-                  url: 'getdata/getDistricts.php',
+                  url: '../../employees/getdata/getDistricts.php',
                   method: 'POST',
                   dataType: 'json',
                   data: {
@@ -39,7 +39,7 @@
               //console.log(districtId);
 
               $.ajax({
-                  url: 'getdata/getCity.php',
+                  url: '../../employees/getdata/getCity.php',
                   method: 'POST',
                   dataType: 'json',
                   data: {
@@ -74,7 +74,7 @@
   <script>
       $(document).ready(function() {
           $.ajax({
-              url: 'getdata/getBank.php',
+              url: '../../employees/getdata/getBank.php',
               method: 'POST',
               dataType: 'json',
               success: function(data) {
@@ -101,7 +101,7 @@
               //console.log(bankID);
 
               $.ajax({
-                  url: 'getdata/getBranch.php',
+                  url: '../../employees/getdata/getBranch.php',
                   method: 'POST',
                   dataType: 'json',
                   data: {
@@ -145,7 +145,7 @@
 
       $(document).ready(function() {
           $.ajax({
-              url: 'getdata/getref.php',
+              url: '../../employees/getdata/getref.php',
               method: 'POST',
               dataType: 'json',
               success: function(data) {
@@ -174,7 +174,7 @@
   <script>
       $(document).ready(function() {
           $.ajax({
-              url: 'getdata/getaccno.php',
+              url: '../../employees/getdata/getaccno.php',
               method: 'POST',
               dataType: 'json',
               success: function(data) {
@@ -193,7 +193,7 @@
   <script>
       $(document).ready(function() {
           $.ajax({
-              url: 'getdata/getProvince.php',
+              url: '../../employees/getdata/getProvince.php',
               method: 'POST',
               dataType: 'json',
               success: function(data) {

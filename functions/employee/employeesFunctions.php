@@ -35,7 +35,12 @@ function insettable($conn, $first_name, $last_name, $nic, $employee_no, $phone_n
 
     $lastId = $sql->insert_id;
     if ($sql->affected_rows > 0) {
-        $result = array("status" => "success", "message" => "Employee added successfully", "lastId" => $lastId);
+        $password = password();
+        if (adduser($conn, $employee_no)) {
+            $result = array("status" => "success", "message" => "Employee added successfully", "employee_id" => $lastId);
+        } else {
+            $result = array("status" => "error", "message" => "Failed to add employee to uset table", "employee_id" => $lastId);
+        }
     } else {
         $result = array("status" => "error", "message" => "Failed to add employee");
     }
@@ -48,9 +53,40 @@ function insettable($conn, $first_name, $last_name, $nic, $employee_no, $phone_n
 }
 
 
-function adddatauser($conn,$employee_no){
-    
+//user table data add
 
+function adduser($conn, $employee_no)
+{
+    $pass = password();
+    $adddata = $conn->prepare("INSERT INTO `employee_login`(`employee_no`, `password`) VALUES (?,?)");
+    $adddatarun = $adddata->bind_param("ss", $employee_no, $pass);
+    $adddata->execute();
+
+    return true;
+}
+
+// password
+function password()
+{
+    $password = rand(100000, 999999);
+    $password = hashs($password);
+    return $password;
+}
+function hashs($password)
+{
+    $salt = 'unique_salt_for_each_password';
+    $hash = md5($salt . $password);
+
+    for ($i = 0; $i < 1000; $i++) {
+        $hash = md5($hash);
+    }
+
+    return $hash;
+}
+
+
+function adddatauser($conn, $employee_no)
+{
 }
 
 

@@ -6,8 +6,8 @@ header("Expires: 0");
 
 
 
-require "../DB/dbconfig.php";
-require "../functions/employee/employeesFunctions.php";
+require "../../DB/dbconfig.php";
+
 
 
 ?>

@@ -3,7 +3,6 @@
     require "../../DB/dbconfig.php";
     require "../../functions/employee/employeesFunctions.php";
 
-    //header('Content-Type: application/json');
 
 
 
