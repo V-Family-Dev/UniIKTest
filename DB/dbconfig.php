@@ -7,11 +7,12 @@ $password = "admin";
 $dbname = "vfam_uni";
 
 try {
-    $conn = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+    $conn = new mysqli($hostname, $username, $password, $dbname);
     // Set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; 
-} catch(PDOException $e) {
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    } 
+} catch (Exception $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 ?>
