@@ -1,8 +1,5 @@
 <?php
 require_once "../include/auth.php";
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 ?>
 
 
@@ -64,7 +61,7 @@ error_reporting(E_ALL);
 <div class="item-list">
     <h2>ITEMS</h2>
     <button type="button" class="load-active-btn" id="fetchActiveButton">Load Active Items</button>
-    <button type="button" class="load-inactive-btn">Load Inactive Items</button>
+    <button type="button" class="load-inactive-btn" id="fetchInactiveButton">Load Inactive Items</button>
 
     <table id="activeItemsTable" border="1px">
         <thead>
@@ -91,19 +88,31 @@ error_reporting(E_ALL);
 <script>
     $(document).ready(function() {
         $('#fetchActiveButton').click(function() {
+            fetchItems(1, true); // 1 for active items
+        });
+
+        $('#fetchInactiveButton').click(function() {
+            fetchItems(0, false); // 0 for inactive items
+        });
+
+        function fetchItems(itemStatus, isActive) {
             $.ajax({
                 url: '../item/itemConfig.php',
                 type: 'GET',
                 data: {
                     action: 'getItems',
+                    status: itemStatus
                     // Other data for insertion...
                 },
                 // dataType: 'json',
                 success: function(response) {
                     if (response.status === "success") {
-                        console.log(response.data);
+                        
                         var tableContent = '';
                         $.each(response.data, function(index, item) {
+                            var buttonText = item.item_status === 1 ? 'Deactivate' : 'Activate';
+                            var buttonClass = item.item_status === 1 ? 'deactivateBtn' : 'activateBtn';
+                            var newStatus = item.item_status === 1 ? 0 : 1;
                             tableContent += '<tr>' +
                                 '<td>' + (index + 1) + '</td>' +
                                 '<td>' + item.item_code + '</td>' +
@@ -116,14 +125,14 @@ error_reporting(E_ALL);
                                 '<td>' + item.level_5 + '</td>' +
                                 '<td>' + item.level_6 + '</td>' +
                                 '<td>' +
-                                '<button class="editBtn" data-id="' + item.Item_id + '">Edit</button>' +
-                                '<button class="deleteBtn" data-id="' + item.Item_id + '">Delete</button>' +
-                                '</td>' + // Replace with actual options or buttons if needed
+                                (isActive ? '<button class="editBtn" data-id="' + item.Item_id + '">Edit</button>' : '') +
+                                '<button class="' + buttonClass + '" data-id="' + item.Item_id + '" data-status="' + newStatus + '">' + buttonText + '</button>' +
+                                '</td>' + 
                                 '</tr>';
                         });
                         $('#activeItemsTable tbody').html(tableContent);
                     } else {
-                        // Handle no items or query failure
+                      
                         alert(response.message);
                     }
                 },
@@ -132,35 +141,37 @@ error_reporting(E_ALL);
                     alert('Error: ' + textStatus + ' - ' + errorThrown);
                 }
             });
-        });
+        };
     });
 
-    $(document).ready(function() {
-        $('#activeItemsTable').on('click', '.deleteBtn', function() {
-            var id = $(this).data('id');
-            $.ajax({
-                url: '../item/itemConfig.php',
-                type: 'GET',
-                data: {
-                    action: 'delete',
-                    id: id
-                },
-                success: function(response) {
-                    if (response.status === "success") {
-                        alert(response.message);
-                        $('#fetchActiveButton').trigger('click');
-                    } else {
-                        alert(response.message);
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log('Error: ' + textStatus + ' - ' + errorThrown);
-                    alert('Error: ' + textStatus + ' - ' + errorThrown);
+    $(document).on('click', '.deactivateBtn, .activateBtn', function() {
+        var id = $(this).data('id');
+        var newStatus = $(this).data('status');
+
+        $.ajax({
+            url: '../item/itemConfig.php',
+            type: 'POST',
+            data: {
+                action: 'toggleStatus',
+                id: id,
+                newStatus: newStatus
+            },
+            success: function(response) {
+                if (response.status === "success") {
+                    console.log("Operation successful:", response.message);
+                    alert(response.message);
+                }  else {
+                    
+                    console.log("Error:", response.message);
+                    alert(response.message);
                 }
-            });
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                
+               
+            }
         });
     });
-    
 </script>
 <!-- <script>
  $(document).ready(function() {

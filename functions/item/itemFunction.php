@@ -20,45 +20,59 @@ function itemDataInsert($conn, $itemCode, $itemName, $price, $level_1, $level_2,
 }
 
 
-function getActiveItems($conn) {
-    $query = "SELECT * FROM item_master WHERE item_status = 1"; // Your SQL query
-
-    if ($result = $conn->query($query)) {
-        $items = array();
-        if ($result->num_rows > 0) {
+function getItems($conn,$status) {
+    $sql = "SELECT * FROM item_master WHERE item_status = ?";
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("i", $status);
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $items = array();
             while ($row = $result->fetch_assoc()) {
                 $items[] = $row;
             }
+            $stmt->close();
             return $items;
         } else {
-            // No items found
-            return null; // or return an appropriate response
+            $stmt->close();
+            return false; // Handle errors appropriately
         }
     } else {
-        // Query failed
-        error_log("Query failed: " . $conn->error); // Log the error
-        return false; // Indicate that an error occurred
+        return false; // Handle errors appropriately
     }
 }
 
 
-function deleteItemMaster($conn, $id) {
-    $sql = "UPDATE item_master SET item_status = 0 WHERE Item_id = ?";
+function updateItemStatus($conn, $id, $newStatus) {
+    $sql = "UPDATE item_master SET item_status = ? WHERE Item_id = ?";
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("ii", $newStatus, $id);
         if ($stmt->execute()) {
-            $result = $stmt->affected_rows > 0; // Check if any rows were updated
             $stmt->close();
-            return $result;
+            return true; // Success
         } else {
-            $error = $stmt->error; // Capture error message
             $stmt->close();
-            return "Error executing query: " . $error;
+            return false; // Failure in execution
         }
     } else {
-        return "Error preparing query: " . $conn->error;
+        return false; // Failure in preparing the statement
     }
-} 
+}
+
+// function toggleItemStatus($conn, $id, $newStatus) {
+//     $sql = "UPDATE item_master SET item_status = ? WHERE Item_id = ?";
+//     if ($stmt = $conn->prepare($sql)) {
+//         $stmt->bind_param("ii", $newStatus, $id);
+//         if ($stmt->execute()) {
+//             $stmt->close();
+//             return true;
+//         } else {
+//             $stmt->close();
+//             return false;
+//         }
+//     } else {
+//         return "Error preparing query: " . $conn->error;
+//     }
+// } 
 // //view item master 
 // function viewItemMaster($conn, $limit, $page)
 // {
