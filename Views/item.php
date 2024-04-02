@@ -107,13 +107,13 @@ require_once "../include/auth.php";
                 // dataType: 'json',
                 success: function(response) {
                     if (response.status === "success") {
-                        
+
                         var tableContent = '';
                         $.each(response.data, function(index, item) {
                             var buttonText = item.item_status === 1 ? 'Deactivate' : 'Activate';
                             var buttonClass = item.item_status === 1 ? 'deactivateBtn' : 'activateBtn';
                             var newStatus = item.item_status === 1 ? 0 : 1;
-                            tableContent += '<tr>' +
+                            tableContent += '<tr id="itemRow_' + item.Item_id + '">' +
                                 '<td>' + (index + 1) + '</td>' +
                                 '<td>' + item.item_code + '</td>' +
                                 '<td>' + item.Item_name + '</td>' +
@@ -127,12 +127,12 @@ require_once "../include/auth.php";
                                 '<td>' +
                                 (isActive ? '<button class="editBtn" data-id="' + item.Item_id + '">Edit</button>' : '') +
                                 '<button class="' + buttonClass + '" data-id="' + item.Item_id + '" data-status="' + newStatus + '">' + buttonText + '</button>' +
-                                '</td>' + 
+                                '</td>' +
                                 '</tr>';
                         });
                         $('#activeItemsTable tbody').html(tableContent);
                     } else {
-                      
+
                         alert(response.message);
                     }
                 },
@@ -160,15 +160,17 @@ require_once "../include/auth.php";
                 if (response.status === "success") {
                     console.log("Operation successful:", response.message);
                     alert(response.message);
-                }  else {
-                    
+                    var rowToUpdate = $('#itemRow_' + id);
+                    rowToUpdate.remove();
+                } else {
+
                     console.log("Error:", response.message);
                     alert(response.message);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                
-               
+
+
             }
         });
     });

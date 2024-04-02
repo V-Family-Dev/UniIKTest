@@ -1,7 +1,7 @@
 <?php
 
 
-require '../functions/sales/salesFunction.php';
+require '../functions/sales/salesFunctions.php';
 require '../DB/dbconfig.php';
 ?>
 <!DOCTYPE html>
