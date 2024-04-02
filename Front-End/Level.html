@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Employee - UNIKONE SOLUTIONS</title>
+    <title>Level - UNIKONE SOLUTIONS</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -215,85 +215,143 @@
         <!--*********************************************************** Content Area Start ***********************************************************************-->
 
         <!---------------------------------------------------------------- 1 Row Start --------------------------------------------------------------->
-        <div class="col-12">
-            <!--------------------------------------------------- Search Start ------------------------------------------------------------->
-            <div class="row p-4">
-
-                <div class="col-12">
-                    <h1 class="h5 mb-1"><strong>Search Employee</strong></h1>
+        <div class="col"><p class="h5 ml-4 mt-4 mb-0"><strong>Commission Master</strong></p></div>
+        
+        <div class="container-fluid backTheam sectionArea cRound mt-2">
+            <div class="row">
+                <div class="col-2">
+                    <label for="commiCode" class="form-label">Commission Code</label>
+                    <input class="inputBox" id="commiCode" type="text" placeholder="Commission Code">
                 </div>
-
-                
-                    <!-- Section rectangle inside -->
-                    <div class="col backTheam cRound ">
-                        <div class="row m-2">
-                            <div class="input-group m-5 justify-content-center">
-                                <div class="searchIcon bi bi-search" style="width: 35px;"></div>
-                                <input id="searchBox" type="text" class="searchBox cRound mr-2" placeholder="Search..." style="width: 30%;">
-                                <input id="searchBtn" class="btnInit btnGreen text-light" type="submit" value="Search">
-                            </div>
-                        </div>
-                    </div>
-
-                
-                <!--------------------------------------------------- Search End ------------------------------------------------------------->
-            </div>
-            <!---------------------------------------------------------------- 1 Row End --------------------------------------------------------------->
-            <!---------------------------------------------------------------- 2 Row Start --------------------------------------------------------------->
-            <div class="col-12">
-                <!--------------------------------------------------- Table Start ----------------------------------------------------------->
-                <div class="row p-4">
-                    <div class="col">
-                        <!-- Section rectangle inside row -->
-                        <div class="col cRound p-4" style="background-color: rgb(223, 222, 222);">
-                            <div class="row justify-content-center">
-
-                                <table id="showTable" class="table table-hover backTheam">
-                                    <thead>
-                                        <tr style="background-color: #b4b3b3">
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Emp No</th>
-                                            <th scope="col">NIC</th>
-                                            <th scope="col">City</th>
-                                            <th scope="col">Province</th>
-                                            <th scope="col">Bank</th>
-                                            <th scope="col">Mobile 1</th>
-                                            <th scope="col">Mobile 2</th>
-                                            <th scope="col">Options</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Dilrukshan Jayawardane</td>
-                                            <td>USD10300</td>
-                                            <td>199933710480</td>
-                                            <td>Rathnapura</td>
-                                            <td>Rathnapura</td>
-                                            <td>Commertial</td>
-                                            <td>0776253125</td>
-                                            <td>0783378585</td>
-                                            <td><input class="btnInit btnBlack text-light" type="submit" id="editBtn"
-                                                    name="editBtn" value="Edit"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-2">
+                    <label for="commiName" class="form-label">Name</label>
+                    <input class="inputBox" id="commiName" type="text" placeholder="Commission Name">
                 </div>
-                <!--------------------------------------------------- Table End ----------------------------------------------------------->
+                <div class="col-2">
+                    <label for="price" class="form-label">Price</label>
+                    <input class="inputBox" id="price" type="text" placeholder="Price Amount">
+                </div>
+                <div class="col-1">
+                    <label for="level1" class="form-label">LV 01</label>
+                    <input class="inputBox" id="level1" type="text" placeholder="Value">
+                </div>
+                <div class="col-1">
+                    <label for="level2" class="form-label">LV 02</label>
+                    <input class="inputBox" id="level2" type="text" placeholder="Value">
+                </div>
+                <div class="col-1">
+                    <label for="level3" class="form-label">LV 03</label>
+                    <input class="inputBox" id="level3" type="text" placeholder="Value">
+                </div>
+                <div class="col-1">
+                    <label for="level4" class="form-label">LV 04</label>
+                    <input class="inputBox" id="level4" type="text" placeholder="Value">
+                </div>
+                <div class="col-1">
+                    <label for="level5" class="form-label">LV 05</label>
+                    <input class="inputBox" id="level5" type="text" placeholder="Value">
+                </div>
+                <div class="col-1">
+                    <label for="level6" class="form-label">LV 06</label>
+                    <input class="inputBox" id="level6" type="text" placeholder="Value">
+                </div>
             </div>
-            <!---------------------------------------------------------------- 2 Row End --------------------------------------------------------------->
 
-            <!--*********************************************************** Content Area End ***********************************************************************-->
 
+            <div class="row">
+                <div class="col mt-4">
+                    <input class="btnInit btnGreen text-light" type="submit" id="createBtn" name="Create"value="Create">
+                    <input class="btnInit btnBlack text-light" type="submit" id="clearBtn" name="Create" value="Clear">
+                </div>
+            </div>
         </div>
-        <!-------------------------------------------------------------------------------- body-row end ----------------------------------------------------------------------------------------------->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
-        <script src="required/js/Main_script.js"></script>
+        <!---------------------------------------------------------------- 1 Row End --------------------------------------------------------------->
+        <!---------------------------------------------------------------- 2 Row Start --------------------------------------------------------------->
+        <div class="container-fluid backTheam cRound sectionArea">
+            <div class="row">
+                <div class="col">
+                    <div class="row mt-3 ml-0">
+                        <div class="input-group mb-1">
+                            <div class="searchIcon bi bi-search" style="width: 35px;"></div>
+                            <input id="searchBox" op,type="text" class="searchBox cRound mr-2" placeholder="Search..." style="width: 20%;">
+                            <input id="searchBtn" class="btnInit btnGreen text-light" type="submit" value="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mt-3">
+                    <input id="loadActive" class="btnInit btnGray" type="submit" value="Load Active"
+                        style="width: auto;">
+                    <input id="loadInactive" class="btnInit btnGray" type="submit" value="Load Inactive"
+                        style="width: auto;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <table id="showTable" class="table table-hover mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Code</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">LV 01</th>
+                            <th scope="col">LV 02</th>
+                            <th scope="col">LV 03</th>
+                            <th scope="col">LV 04</th>
+                            <th scope="col">LV 05</th>
+                            <th scope="col">LV 06</th>
+                            <th scope="col">Option</th>
+                          </tr>
+                        </thead>
+                        <tbody style="background-color: rgb(217, 217, 217);">
+                          <tr>
+                            <td>COM02</td>
+                            <td>link click</td>
+                            <td>100</td>
+                            <td>50</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>
+                                <input id="searchBtn" class="btnYellow btnTable" type="submit" value="Edit">
+                                <input id="searchBtn" class="btnRed btnTable" type="submit" value="Inactive">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>ZCO02</td>
+                            <td>post upload</td>
+                            <td>50</td>
+                            <td>25</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>
+                                <input id="searchBtn" class="btnYellow btnTable" type="submit" value="Edit">
+                                <input id="searchBtn" class="btnCream btnTable" type="submit" value="Active">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+        <!---------------------------------------------------------------- 2 Row End --------------------------------------------------------------->
+
+        <!--*********************************************************** Content Area End ***********************************************************************-->
+
+    </div>
+    <!-------------------------------------------------------------------------------- body-row end ----------------------------------------------------------------------------------------------->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <script src="required/js/Main_script.js"></script>
 </body>
 
 </html>
