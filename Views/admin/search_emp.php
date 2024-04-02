@@ -100,6 +100,55 @@
         $('#search').submit(function(e) {
             e.preventDefault();
             var emp_code = $(this).find('input').val();
+
+            // Clear the table before making the AJAX request
+            $('#emp_s tbody').empty();
+
+            $.ajax({
+                url: '../../employees/getdata/getemptable.php',
+                method: 'POST',
+                data: {
+                    emp_code: emp_code
+                },
+                success: function(data) {
+                    console.log(data);
+                    var table = $('#emp_s tbody');
+                    var emp = JSON.parse(data);
+
+                    // Use forEach to iterate over the emp array
+                    emp.forEach(function(employee) {
+                        var row = $('<tr>');
+                        row.append('<td>' + employee.Name + '</td>');
+                        row.append('<td>' + employee.NIC + '</td>');
+                        row.append('<td>' + employee['Employee No'] + '</td>');
+                        row.append('<td>' + employee['Mobile Number'] + '</td>');
+                        row.append('<td>' + employee.City + '</td>');
+                        row.append('<td>' + employee.District + '</td>');
+                        row.append('<td>' + employee['Bank Name'] + '</td>');
+                        row.append('<td><button data-empid="' + employee['empid'] + '" onclick="edit(this)">Edit</button></a> <button data-empid="' + employee['empid'] + '"onclick="deletes(this)">Delete</button></td>');
+
+                        table.append(row);
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("error", textStatus, errorThrown);
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#search3').submit(function(e) {
+            e.preventDefault();
+            var emp_code = $(this).find('input').val();
             $.ajax({
                 url: '../../employees/getdata/getemptable.php',
                 method: 'POST',
