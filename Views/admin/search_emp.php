@@ -47,6 +47,8 @@
             <button type="submit">Search</button>
         </form>
 
+
+
         <!-- Table -->
         <table id="emp_s">
             <thead>
@@ -86,12 +88,12 @@
     </div>
 
 </body>
+
 <script>
     $(document).ready(function() {
-        $('#emp_s').DataTable();
-        $.fn.dataTable.ext.errMode = 'none';
 
 
+        console.log("Page loaded!");
     });
 </script>
 
@@ -144,49 +146,15 @@
 
 
 
-<script>
-    $(document).ready(function() {
-        $('#search3').submit(function(e) {
-            e.preventDefault();
-            var emp_code = $(this).find('input').val();
-            $.ajax({
-                url: '../../employees/getdata/getemptable.php',
-                method: 'POST',
-                data: {
-                    emp_code: emp_code
-                },
-                success: function(data) {
-                    console.log(data);
-                    var table = $('#emp_s tbody');
-                    table.empty();
-                    var emp = JSON.parse(data);
-                    var row = $('<tr>');
-                    row.append('<td>' + emp[0].Name + '</td>');
-                    row.append('<td>' + emp[0].NIC + '</td>');
-                    row.append('<td>' + emp[0]['Employee No'] + '</td>');
-                    row.append('<td>' + emp[0]['Mobile Number'] + '</td>');
-                    row.append('<td>' + emp[0].City + '</td>');
-                    row.append('<td>' + emp[0].District + '</td>');
-                    row.append('<td>' + emp[0]['Bank Name'] + '</td>');
-                    row.append('<td><button data-empid="' + emp[0]['empid'] + '" onclick="edit(this)">Edit</button></a> <button data-empid="' + emp[0]['empid'] + '"onclick="deletes(this)">Delete</button></td>');
 
-                    table.append(row);
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log("error", textStatus, errorThrown);
-                }
-            });
-        });
-    });
-</script>
 
 <script>
     function edit(btn) {
         var empid = $(btn).data('empid');
         console.log(empid);
-        // Redirect to edit page with empid
         window.location.href = 'edit_emp.php?empid=' + empid;
+
+
     }
 
     function deletes(btn) {

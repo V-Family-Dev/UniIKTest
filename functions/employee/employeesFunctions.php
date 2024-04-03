@@ -74,7 +74,7 @@ function password()
 }
 function hashs($password)
 {
-    $salt = 'unique_salt_for_each_password';
+    $salt = 'amarabandurupasinghe';
     $hash = md5($salt . $password);
 
     for ($i = 0; $i < 1000; $i++) {
