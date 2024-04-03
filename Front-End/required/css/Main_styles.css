@@ -129,6 +129,16 @@ a.noUnderline {
     height: 30px;
 }
 
+
+label {
+    font-weight: 500;
+}
+
+.placeholder-text {
+    font-size: 15px;
+    color: #999;
+}
+
 .searchBox {
     outline: none;
     border: solid 2px #266A31;
@@ -139,6 +149,7 @@ a.noUnderline {
     font-size: 15px;
     height: 38px;
 }
+
 .searchIcon {
     outline: none;
     border: solid 2px #266A31;
@@ -147,15 +158,6 @@ a.noUnderline {
     background-color: #fff;
     padding-left: 10px;
     font-size: 23px;
-}
-
-label {
-    font-weight: 500;
-}
-
-.placeholder-text {
-    font-size: 15px;
-    color: #999;
 }
 
 select {
