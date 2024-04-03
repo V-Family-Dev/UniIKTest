@@ -8,7 +8,7 @@ require "../../functions/login/loginFunction.php";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = isset($_POST['login-username']) ? $_POST['login-username'] : '';
     $password = isset($_POST['login-password']) ? $_POST['login-password'] : '';
-    $password = password($password);
+    $password = hashs($password);
 
     if (empty($username) || empty($password)) {
 

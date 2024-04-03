@@ -358,10 +358,20 @@ if (isset($_GET['empid']) && $_SERVER['REQUEST_METHOD'] == 'GET') {
                 method: 'POST',
                 data: empdata, // Directly use the array here
                 success: function(data) {
-                    //console.log(data);
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Employee Update successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.error("Error: ", textStatus, errorThrown);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'There was an error adding the Employee',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
                 }
             });
         });

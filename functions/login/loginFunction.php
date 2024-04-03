@@ -62,11 +62,16 @@ function fetchAdminDetails($conn, $username, $password)
     }
 }
 
-function password()
+function hashs($password)
 {
-    $password = rand(100000, 999999);
-    $password = hashs($password);
-    return $password;
+    $salt = 'amarabandurupasinghe';
+    $hash = md5($salt . $password);
+
+    for ($i = 0; $i < 1000; $i++) {
+        $hash = md5($hash);
+    }
+
+    return $hash;
 }
 
 

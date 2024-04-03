@@ -15,7 +15,7 @@ require "../include/head.php";
     <h1>Employee Registration</h1>
 
 
-    <form id="itemCreationForm" method="POST">
+    <form id="employeeadd" method="POST">
         <label for="firstName">First Name:</label>
         <input type="text" id="first_name" name="first_name" value=""><br>
 
@@ -186,7 +186,7 @@ require "../include/head.php";
     </script>
     <script>
         $(document).ready(function() {
-            $("#itemCreationForm").submit(function(e) {
+            $("#employeeadd").submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
                 console.log(formData);
@@ -197,12 +197,22 @@ require "../include/head.php";
                     processData: false,
                     contentType: false,
                     success: function(data) {
-                        console.log(data);
-                        alert(data);
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Employee added successfully',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+
 
                     },
                     error: function(xhr, status, error) {
-                        // Handle error response
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'There was an error adding the Employee',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
                     }
                 });
             });

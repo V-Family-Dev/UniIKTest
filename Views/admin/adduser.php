@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -54,6 +55,7 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     $(document).ready(function() {
@@ -120,8 +122,6 @@
             }
         });
     }
-
-    fun
 </script>
 
 
@@ -164,8 +164,23 @@
             url: "../../admin/insertdata/insertuser.php",
             type: "POST",
             data: data,
-            success: function(data) {
-                console.log(data);
+            success: function(response) {
+                // Assuming 'response' is a string or object that indicates success
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'User added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            },
+
+            error: function() {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an error adding the user',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         });
     });

@@ -130,12 +130,21 @@ require "../../include/head.php";
                     processData: false,
                     contentType: false,
                     success: function(data) {
-                        console.log(data);
-                        alert(data);
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Employee added successfully',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
 
                     },
                     error: function(xhr, status, error) {
-                        // Handle error response
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'There was an error adding the Employee',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
                     }
                 });
             });
