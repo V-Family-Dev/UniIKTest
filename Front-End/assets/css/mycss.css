@@ -72,6 +72,15 @@ a:hover {
     background-color: rgb(244, 248, 179);
     border-color: rgb(248, 226, 179);
 }
+.btnCream2 {
+    background-color: rgb(241, 220, 183);
+    border-color: rgb(241, 220, 183);
+}
+
+.btnCream2:active {
+    background-color: rgb(216, 198, 166);
+    border-color: rgb(241, 220, 183);
+}
 
 .btnBlack:active {
     background-color: rgba(87, 87, 87, 0.8);
