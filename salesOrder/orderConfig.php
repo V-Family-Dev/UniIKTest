@@ -21,26 +21,36 @@ if ($method == 'POST') {
 switch ($action) {
     case 'submitOrder':
         // Handle submit order action
-        if (isset($_POST['orderData'])) {
-            echo json_encode(["status" => "success", "receivedData" => $_POST['orderData']]);// Process order data
+        if (isset($_POST['employeeId'], $_POST['orderDate'],$_POST['totalearning'] ,$_POST['orderData'])) {
+            $employeeId = $_POST['employeeId'];
+            $orderDate = $_POST['orderDate'];  // Retrieve the order date
+            $orderData = $_POST['orderData'];
+            $totalEarning = $_POST['totalearning'];
+            echo json_encode([
+                "status" => "success",
+                "receivedOrderData" => $orderData,
+                "receivedEmployeeId" => $employeeId,
+                "receivedOrderDate" => $orderDate,
+                "totalEarning" => $totalEarning
+            ]);
         } else {
             echo json_encode(["status" => "error", "message" => "No order data provided"]);
         }
         break;
-    
+
     case 'empdata':
         // Handle employee data action
         $getEmpId = getEmpId($conn);
         echo json_encode(["status" => "success", "data" => $getEmpId]);
         break;
-    
+
     case 'itemdata':
         // Handle item data action
         $getItemData = getItemData($conn);
         echo json_encode(["status" => "success", "data" => $getItemData]);
         break;
-    
-    // Add more cases as needed
+
+        // Add more cases as needed
 
     default:
         echo json_encode(["status" => "error", "message" => "Invalid action"]);
@@ -49,5 +59,3 @@ switch ($action) {
 
 // Helper functions (getEmpId, getItemData, etc.)
 // ...
-
-?>

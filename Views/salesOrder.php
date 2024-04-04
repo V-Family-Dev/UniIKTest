@@ -25,31 +25,8 @@ require '../functions/sales/salesFunctions.php';
 
     <div>
 
-        <label for="sales-date">Sales Date</label><input type="date" name="sales-date">
+        <label for="sales-date">Sales Date</label><input type="date" id="date" name="sales-date">
     </div>
-
-    <!-- <script>
-        $(document).ready(function() {
-            $('#getempdata').select2({
-                placeholder: "User Emp ID",
-                allowClear: true
-            }).on('select2:select', function(e) {
-                var selectedOption = $(this).find(':selected');
-                $('#contact-person').val(selectedOption.data('name'));
-                $('#contact-no').val(selectedOption.data('number'));
-                $('#address').val(selectedOption.data('address'));
-            });
-
-            $('#submitOrder').click(function() {
-                var employeeId = $('#getempdata').val();
-
-                var contactName = $('#contact-person').val();
-                var contactNumber = $('#contact-no').val();
-                var address = $('#address').val();
-            
-            });
-        });
-    </script> -->
 
 
     <h2>SALES ORDER ITEMS</h2>
@@ -65,7 +42,7 @@ require '../functions/sales/salesFunctions.php';
     </div>
     <div>
         <label for="item-quantity">Item Quantity</label>
-        <input type="text" id="item-quantity" name="item-quantity" placeholder="Item Quantity">
+        <input type="text" id="item-quantity" name="item-quantity" placeholder="Item Quantity" required>
     </div>
     <div>
         <label for="item-price">Item Price</label>
@@ -231,7 +208,7 @@ require '../functions/sales/salesFunctions.php';
             '<td><button class="editRow">Remove</button></td>' +
             '</tr>'
         );
-        
+
         updateTotal();
         // Clear the input fields after adding
         $('#item-name').val('');
@@ -239,19 +216,71 @@ require '../functions/sales/salesFunctions.php';
         $('#item-price').val('');
         $('#item-quantity').val('');
         $('#mytable').on('click', '.editRow', function() {
-            
+
             // Find the closest tr parent element and remove it
             $(this).closest('tr').remove();
             updateTotal();
         });
 
     });
+
+    function sendOrderData(empId, date, total, orderData) {
+        $.ajax({
+            type: 'POST',
+            url: '../salesOrder/orderConfig.php', // Update with the correct path
+            data: {
+                action: 'submitOrder',
+                employeeId: empId,
+                orderDate: date,
+                totalearning: total,
+                orderData: orderData,
+
+
+            },
+            success: function(response) {
+                // Handle the response from the server
+                console.log('Server response:', response);
+                clearFormFields();
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors
+                console.error('Submission error:', error);
+            }
+        });
+    }
+
+    function clearFormFields() {
+        // Reset input fields
+        $('#item-name').val('');
+        $('#item-quantity').val('');
+        $('#item-price').val('');
+        $('#totalAmount').text('0.00');
+
+        // Reset Select2 dropdowns
+        $('#getempdata').val(null).trigger('change');
+        $('#itemSelect').val(null).trigger('change');
+
+        // Clear the table
+        $('#mytable tbody').empty();
+
+        // Reset additional employee detail fields
+        $('#contact-person').val(''); // Clear contact person field
+        $('#contact-no').val(''); // Clear contact number field
+        $('#address').val('');
+
+        // Reset any other fields as necessary
+    }
+
     $('#submitOrder').click(function(event) {
         event.preventDefault();
+        var empId = $('#getempdata').val();
+        var date = $('#date').val();
+        var total = $('#totalAmount').text();
         var orderData = [];
         $('#mytable tbody tr').each(function() {
             // var rowHtml = $(this).html(); // Log the HTML of the row
             // console.log('Row HTML:', rowHtml); // This should show you the structure of the row being processed
+
 
             var itemCode = $(this).find('.itemCode').text();
             var itemQuantity = $(this).find('.itemQuantity').text();
@@ -264,26 +293,11 @@ require '../functions/sales/salesFunctions.php';
             }
 
         });
-        sendOrderData(orderData);
+        if (orderData.length > 0) {
+            sendOrderData(empId, date, total, orderData); // Pass both employee ID and order data to the function
+        } else {
+            console.log('No items to submit');
+        }
         // Rest of your code...
     });
-
-    function sendOrderData(orderData) {
-        $.ajax({
-            type: 'POST',
-            url: '../salesOrder/orderConfig.php', // Update with the correct path
-            data: {
-                action: 'submitOrder',
-                orderData: orderData
-            },
-            success: function(response) {
-                // Handle the response from the server
-                console.log('Server response:', response);
-            },
-            error: function(xhr, status, error) {
-                // Handle any errors
-                console.error('Submission error:', error);
-            }
-        });
-    }
 </script>
