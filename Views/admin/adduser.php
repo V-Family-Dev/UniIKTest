@@ -37,9 +37,13 @@
     </form>
     <br><br><br><br>
 
-    <div class="table">
+    <div class="action">
         <button onclick="active()">Active User </button>
         <button onclick="inactive()">Inactive User </button>
+    </div>
+
+    <div class="table">
+
 
 
 
@@ -47,8 +51,7 @@
 
     </div>
 
-    <tr><button onclick="chengepw()">Password change</button></tr>
-    <tr><button onclick="deleteuser()">inactive user</button></tr>
+
 
 
 
@@ -62,9 +65,6 @@
         active();
     });
 
-
-
-
     function active() {
         $.ajax({
             url: "../../admin/getdata/gettabledata.php",
@@ -74,7 +74,6 @@
                 action: "active"
             },
             success: function(data) {
-                console.log(data);
                 var table = '<table border="1">';
                 table += '<tr>';
                 table += '<th>Username</th>';
@@ -85,8 +84,9 @@
                     table += '<tr>';
                     table += '<td>' + data[i].user_name + '</td>';
 
-                    table += '<td><button onclick="chengepw(' + data[i].id + ')">change password</button></td>';
-                    table += '<td><button onclick="deleteuser(' + data[i].id + ')">Inactive User</button></td>';
+                    table += '<td><button class="edit-user-btn" data-eid="' + data[i].admin_id + '">Change Password</button></td>';
+                    table += '<td><button onclick="deleteuser(' + data[i].admin_id + ')">Inactive User</button></td>';
+
 
                     table += '</tr>';
                 }
@@ -105,47 +105,30 @@
                 action: "inactive"
             },
             success: function(data) {
-                console.log(data);
                 var table = '<table border="1">';
                 table += '<tr>';
                 table += '<th>Username</th>';
-                table += '<th>Action</th>'; // Assuming this is intentional for display
+                table += '<th>Action</th>';
                 table += '</tr>';
                 for (var i = 0; i < data.length; i++) {
                     table += '<tr>';
                     table += '<td>' + data[i].user_name + '</td>';
+                    table += '<td><button class="active-user-btn" data-eid="' + data[i].admin_id + '">Active User</button></td>';
+
                     table += '</tr>';
-                    table += '<td><button onclick="deleteuser(' + data[i].id + ')">Inactive User</button></td>';
                 }
                 table += '</table>';
                 $(".table").html(table);
             }
         });
     }
-</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
     $(document).ready(function() {
         $.ajax({
             url: "../../admin/getdata/getcheckbox.php",
             type: "POST",
-            dataType: "json", // Parses the returned data as JSON
+            dataType: "json",
             success: function(data) {
-                console.log(data);
                 for (var i = 0; i < data.length; i++) {
                     var id = data[i].area_id;
                     var name = data[i].area_name;
@@ -165,7 +148,6 @@
             type: "POST",
             data: data,
             success: function(response) {
-                // Assuming 'response' is a string or object that indicates success
                 Swal.fire({
                     title: 'Success!',
                     text: 'User added successfully',
@@ -185,5 +167,153 @@
         });
     });
 </script>
+
+
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.edit-user-btn', function() {
+            var userId = $(this).data('eid');
+            chengepw(userId);
+        });
+        $(document).on('click', '.delete-user-btn', function() {
+            var userId = $(this).data('eid');
+            console.log(userId);
+            deleteuser(userId);
+        });
+
+    });
+
+
+    function chengepw(id) {
+        Swal.fire({
+            title: 'Enter new password',
+            input: 'password',
+            inputAttributes: {
+                autocapitalize: 'off',
+                required: 'required'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            showLoaderOnConfirm: true,
+            preConfirm: (password) => {
+                $.ajax({
+                    url: "../../admin/update.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        password: password,
+                        action: "changePassword"
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Password changed successfully',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+                        active();
+                    },
+                    error: function() {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'There was an error changing the password',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        });
+    }
+
+    function deleteuser(id) {
+
+        Swal.fire({
+            title: 'Are you sure you want to delete this user?',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                $.ajax({
+                    url: "../../admin/update.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        action: "deleteUser"
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'User deleted successfully',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+                        active();
+                    },
+                    error: function() {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'There was an error deleting the user',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        });
+    }
+</script>
+
+
+
+<script>
+    $(document).on('click', '.active-user-btn', function() {
+        var userId = $(this).data('eid');
+
+        Swal.fire({
+            title: 'Are you sure you want to activate this user?',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                return $.ajax({
+                    url: "../../admin/update.php",
+                    type: "POST",
+                    data: {
+                        id: userId,
+                        action: "activeuser"
+                    },
+                    dataType: "json" // Ensure you expect a JSON response
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed && result.value) {
+                if (result.value.status === 'success') {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User activated successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+
+                    });
+                    inactive();
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: result.value.message || 'There was an error activating the user',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            }
+        });
+    });
+</script>
+
 
 </html>

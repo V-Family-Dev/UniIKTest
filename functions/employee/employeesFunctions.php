@@ -61,8 +61,35 @@ function adduser($conn, $employee_no)
     $adddata = $conn->prepare("INSERT INTO `employee_login`(`employee_no`, `password`) VALUES (?,?)");
     $adddatarun = $adddata->bind_param("ss", $employee_no, $pass);
     $adddata->execute();
+    if (createwallet($conn, $employee_no) > 0) {
+        $result = true;
+    } else {
+        $result = false;
+    }
 
-    return true;
+    return $result;
+}
+
+//create wallet
+
+function createwallet($conn, $employee_no)
+{
+    $adddata = $conn->prepare("INSERT INTO `wallet` (`employee_no`, `status`) VALUES (?, ?)");
+    if ($adddata === false) {
+        return false;
+    }
+    $statusValue = 1;
+
+    $adddatarun = $adddata->bind_param("si", $employee_no, $statusValue);
+    if ($adddatarun === false) {
+        return false;
+    }
+
+    if (!$adddata->execute()) {
+        return false;
+    }
+
+    return $conn->affected_rows;
 }
 
 // password

@@ -125,6 +125,7 @@ if (isset($_GET['empid']) && $_SERVER['REQUEST_METHOD'] == 'GET') {
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script>
@@ -352,23 +353,50 @@ if (isset($_GET['empid']) && $_SERVER['REQUEST_METHOD'] == 'GET') {
     $(document).ready(function() {
         $('#empupdate').submit(function(e) {
             e.preventDefault();
-            var empdata = $(this).serializeArray(); // Use serializeArray to get form data as key-value pairs
+            var empdata = $(this).serializeArray();
+
+            Swal.fire({
+                title: 'Processing...',
+                text: 'Please wait while the employee is being updated',
+                icon: 'info',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                willOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
             $.ajax({
                 url: '../../employees/update.php',
                 method: 'POST',
-                data: empdata, // Directly use the array here
+                data: empdata,
                 success: function(data) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Employee Update successfully',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    });
+                    let response = JSON.parse(data);
+                    if (response.status === 'success') {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Employee updated successfully',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = 'search_emp.php';
+                            }
+                        });
+
+                    } else {
+                        Swal.fire({
+                            title: 'Update Failed',
+                            text: response.message || 'The update process failed',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     Swal.fire({
                         title: 'Error!',
-                        text: 'There was an error adding the Employee',
+                        text: `Error occurred: ${textStatus}, ${errorThrown}`,
                         icon: 'error',
                         confirmButtonText: 'OK'
                     });
@@ -377,6 +405,7 @@ if (isset($_GET['empid']) && $_SERVER['REQUEST_METHOD'] == 'GET') {
         });
     });
 </script>
+
 
 <script>
     $(document).ready(function() {

@@ -1,5 +1,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <script>
       $(document).ready(function() {
           $('#province, #districtsdata, #citydata,#reference_id,#bankSelect,#branchselect').select2();

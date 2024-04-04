@@ -61,21 +61,12 @@
                     <th>District</th>
                     <th>Bank Name</th>
                     <th>Options</th>
+                    <th>Password</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- <td>John Doe</td>
-                    <td>123456789V</td>
-                    <td>EMP001</td>
-                    <td>0712345678</td>
-                    <td>Colombo</td>
-                    <td>Western</td>
-                    <td>Bank of Ceylon</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </td> -->
-                <td><button data-empid="" onclick="edit(this)">Edit</button></a> <button onclick="deletes(this)">Delete</button></td>
+
+
 
                 <tr>
 
@@ -89,13 +80,8 @@
 
 </body>
 
-<script>
-    $(document).ready(function() {
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-        console.log("Page loaded!");
-    });
-</script>
 
 <script>
     $(document).ready(function() {
@@ -113,7 +99,7 @@
                     emp_code: emp_code
                 },
                 success: function(data) {
-                    console.log(data);
+
                     var table = $('#emp_s tbody');
                     var emp = JSON.parse(data);
 
@@ -127,7 +113,9 @@
                         row.append('<td>' + employee.City + '</td>');
                         row.append('<td>' + employee.District + '</td>');
                         row.append('<td>' + employee['Bank Name'] + '</td>');
-                        row.append('<td><button data-empid="' + employee['empid'] + '" onclick="edit(this)">Edit</button></a> <button data-empid="' + employee['empid'] + '"onclick="deletes(this)">Delete</button></td>');
+                        row.append('<td><button data-empid="' + employee.empid + '" onclick="edit(this)">Edit</button> <button data-empid="' + employee.empid + '" onclick="deletes(this)">Delete</button></td>');
+                        row.append('<td><button class="cpassword" data-empid="' + employee['Employee No'] + '">Password</button></td>');
+
 
                         table.append(row);
                     });
@@ -163,5 +151,63 @@
 
     }
 </script>
+
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.cpassword', function() {
+            var empid = $(this).data('empid');
+
+            Swal.fire({
+                title: 'Do you want to change the password?',
+                text: "This action cannot be undone",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, change it!',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return new Promise((resolve, reject) => {
+                        $.ajax({
+                            url: '../../employees/insertdata/emppassword.php',
+                            type: 'POST',
+                            data: {
+                                empid: empid,
+                                action: "emppassword"
+                            },
+                            dataType: 'json'
+                        }).done((response) => {
+                            if (response.status === 'success') {
+                                resolve(response);
+                            } else {
+                                reject(response);
+                            }
+                        }).fail((jqXHR, textStatus, errorThrown) => {
+                            Swal.showValidationMessage(`Request failed: ${textStatus}`);
+                            reject(jqXHR);
+                        });
+                    });
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Changed!',
+                        'The password has been changed.',
+                        'success'
+                    );
+                }
+            }).catch((error) => {
+                Swal.fire('Error!', error.responseText || 'An unknown error occurred', 'error');
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
 
 </html>
