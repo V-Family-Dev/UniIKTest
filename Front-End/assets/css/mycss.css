@@ -1,34 +1,12 @@
-a,a.noUnderline {
+a,
+a.noUnderline {
     text-decoration: none;
 }
 
-.dataTables_wrapper .dt-search {
-    display: none;
-}
-
-
-.comName{
-	color: white;
-    font-size: 30px;
-    font-weight: 500;
-}
-#showTable {
-    background-color: #8CBC68;
-}
-label{
-    color: black;
-    font-weight: 400;
-    display: flex;
-    margin-bottom: 0;
-}
-
-.first-content{
-	margin-top: 50px;
-}
-
-a, a:hover{
-	color: white;
-	text-decoration: none;
+a,
+a:hover {
+    color: white;
+    text-decoration: none;
 }
 
 /* back tray color */
@@ -95,10 +73,9 @@ a, a:hover{
     border-color: rgb(248, 226, 179);
 }
 
-
 .btnBlack:active {
-    background-color: rgb(59, 59, 61, 0.8);
-    border-color: rgb(59, 59, 61, 0.8);
+    background-color: rgba(87, 87, 87, 0.8);
+    border-color: rgb(87, 87, 87, 0.8);
 }
 
 .btnGreen:active {
@@ -122,14 +99,35 @@ a, a:hover{
 }
 
 .btnCream:active {
-    background-color: rgb(252, 247, 0);
+    background-color: rgb(226, 224, 72);
     border-color: rgb(252, 247, 0, 0.8);
 }
 
+.dataTable {
+    width: 100% !important;
+}
 
+.comName {
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+}
 
 .cRound {
     border-radius: 15px;
+}
+
+#dt-search-0,
+label[for="dt-search-0"] {
+    display: none;
+}
+
+.fbolt {
+    font-weight: 500;
+}
+
+.first-content {
+    margin-top: 50px;
 }
 
 .inputBox {
@@ -143,8 +141,12 @@ a, a:hover{
     height: 30px;
 }
 
-.fbolt {
-    font-weight: 500;
+label {
+    color: black;
+    font-weight: 400;
+    display: flex;
+    margin-bottom: 0;
+    margin-top: 7px;
 }
 
 .placeholder-text {
@@ -178,9 +180,14 @@ select {
     outline: none;
 }
 
-.sectionArea {
-    margin: 30px;
-    padding: 30px;
+#showTable {
+    margin: 0;
+    padding: 0;
+    background-color: #8CBC68;
+}
+
+#showTable_wrapper {
+    width: 100%;
 }
 
 /* Navigation bar ---------------------------------------------------------------------------------------------- */
@@ -190,7 +197,7 @@ select {
     z-index: 2;
 }
 
-.naviIcon{
+.naviIcon {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Manage User - UNIKONE SOLUTION</title>
+	<title>Sale Order Details - UNIKONE SOLUTION</title>
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="assets/css/animate.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/media-queries.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css"/>
+	<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
 	<link rel="stylesheet" href="assets/css/mycss.css">
 
 </head>
@@ -177,56 +177,66 @@
 			<!------------------------------------------------------------ First Content Start ------------------------------------------------------------>
 			<div class="first-content">
 				<div class="container-fluid">
-					<div class="row  pt-5 pl-1 pr-1">
-						<h5 class="mb-1 ml-4">Manage User</h5>
-						<div class="col-12">
-							<!-- Section rectangle inside -->
-							<div class="col backTheam cRound p-4">
-								<div class="row pb-2 pt-2">
-		
-									<div class="col-md-6">
-										<label for="username" class="form-label">Username</label>
-										<input class="inputBox" id="username" type="text" placeholder="Username">
-									</div>
-		
-								</div>
-								<div class="row pb-2 pt-2">
-									<div class="col-md-6">
-										<label for="password" class="form-label">Password</label>
-										<input class="inputBox" id="password" type="password" placeholder="Password">
+					<div class="row pt-5 pl-3 pr-3">
+
+						<h5 class="mb-1">Sale Order Details</h5>
+
+						<div class="col-12 backTheam cRound p-4">
+							<div class="row">
+								<div class="col-3">
+									<label for="salesEmpID" class="form-label">Sales Employee ID</label>
+									<div class="inputBox">
+										<select class="inputBox" id="salesEmpID">
+											<option value="" selected disabled>Select Item Code</option>
+											<option value="Employee ID 1">Employee ID 1</option>
+											<option value="Employee ID 2">Employee ID 2</option>
+											<option value="Employee ID 3">Employee ID 3</option>
+										</select>
 									</div>
 								</div>
-								<div class="row pb-2 pt-2 ml-0">
-									<!-- MU - Manage User -->
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_EM" type="checkbox">
-											<label for="MU_EM" class="form-label ml-2"><strong>EM</strong></label>
-										</div>
-									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_CM" type="checkbox">
-											<label for="MU_CM" class="form-label ml-2"><strong>CM</strong></label>
-										</div>
-									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_SM" type="checkbox">
-											<label for="MU_SM" class="form-label ml-2"><strong>SM</strong></label>
-										</div>
-									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_SS" type="checkbox">
-											<label for="MU_SS" class="form-label ml-2"><strong>SS</strong></label>
-										</div>
+								<div class="col-3">
+									<label for="contPerson" class="form-label">Contact Person</label>
+									<div class="inputBox">
+										<select class="inputBox" id="contPerson">
+											<option value="" selected disabled>Select Item Code</option>
+											<option value="Contact Person 1">Contact Person 1</option>
+											<option value="Contact Person 2">Contact Person 2</option>
+											<option value="Contact Person 3">Contact Person 3</option>
+										</select>
 									</div>
 								</div>
-								<div class="row pb-2 pt-2">
-									<div class="col-3 d-flex justify-content-start">
-										<input class="btnInit btnGreen text-light" id="createBtn" type="Submit" value="Create">
+								<div class="col-3">
+									<label for="mobNumber" class="form-label">Mobile Number</label>
+									<input type="text" class="inputBox" id="mobNumber" name="mobNumber" placeholder="Mobile Number">
+								</div>
+								<div class="col-3">
+									<label for="city" class="form-label">City</label>
+									<div class="inputBox">
+										<select class="inputBox" id="city">
+											<option value="" selected disabled>Select Item Code</option>
+											<option value="City 1">City 1</option>
+											<option value="City 2">City 2</option>
+											<option value="City 3">City 3</option>
+										</select>
 									</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-4">
+									<label for="address" class="form-label">Address</label>
+									<input class="inputBox" id="addressLine1" type="text" placeholder="Address line 1">
+									<input class="inputBox mt-1 mb-1" id="addressLine2" type="text" placeholder="Address line 2">
+									<input class="inputBox" id="addressLine3" type="text" placeholder="Address line 3">
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-3">
+									<label for="saleDate" class="form-label">Sale Date</label>
+									<input type="date" class="inputBox" id="saleDate" name="saleDate">
+								</div>
+								<div class="col-3">
+									<label for="dueDate" class="form-label">Due date</label>
+									<input type="date" class="inputBox" id="dueDate" name="dueDate">
 								</div>
 							</div>
 						</div>
@@ -238,78 +248,90 @@
 			<!------------------------------------------------------------ Second Section Start ------------------------------------------------------------>
 
 			<div class="container-fluid">
-				<div class="row">
-
-					<h5 class="mb-1 ml-4 mt-4">Area Acess</h5>
-						<div class="col-12">
-							<!-- Section rectangle inside -->
-							<div class="col backTheam cRound p-4">
-								
-								<div class="row pb-2 pt-2 ml-0">
-									<!-- MU - Manage User -->
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_EM" type="checkbox">
-											<label for="MU_EM" class="form-label ml-2"><strong>EM</strong></label>
-										</div>
-									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_CM" type="checkbox">
-											<label for="MU_CM" class="form-label ml-2"><strong>CM</strong></label>
-										</div>
-									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_SM" type="checkbox">
-											<label for="MU_SM" class="form-label ml-2"><strong>SM</strong></label>
-										</div>
-									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_SS" type="checkbox">
-											<label for="MU_SS" class="form-label ml-2"><strong>SS</strong></label>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-				</div>
-			</div>
-			
-			<!------------------------------------------------------------ Second Section End ------------------------------------------------------------>
-			<!------------------------------------------------------------ Second Section Start ------------------------------------------------------------>
-
-			<div class="container-fluid">
 				<div class="row p-3">
 
-					<div class="col p-5 cRound" style="background-color: rgb(223, 222, 222);">
-						<div class="row justify-content-center">
+					<h5 class="mb-1">Sale Order Items</h5>
 
-							<table id="showTable" class="table table-hover backTheam m-0">
-								<thead>
-									<tr style="background-color: #b4b3b3">
-										<th scope="col">Name</th>
-                                        <th scope="col">UID</th>
-                                        <th scope="col">Access</th>
-                                        <th scope="col">Options</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Dilrukshan Jayawardane</td>
-                                        <td>USD10300</td>
-                                        <td>EM,CM,SM</td>
-                                        <td><input class="btnTable btnYellow" type="submit" id="editBtn" name="editBtn" value="Edit"></td>
-									</tr>
-								</tbody>
-							</table>
+					<div class="col-12 backTheam cRound p-4"  style="background-color: rgb(223, 222, 222);">
+						<div class="row">
+							<div class="col-3">
+								<label for="itemCode" class="form-label">Item Code</label>
+								<div class="inputBox">
+									<select class="inputBox" id="itemCode">
+										<option value="" selected disabled>Select Item Code</option>
+										<option value="Item Code 1">Item Code 1</option>
+										<option value="Item Code 2">Item Code 2</option>
+										<option value="Item Code 3">Item Code 3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-3">
+								<label for="itemName" class="form-label">Item Name</label>
+								<div class="inputBox">
+									<select class="inputBox" id="itemName">
+										<option value="" selected disabled>Select Item Name</option>
+										<option value="Item Name 1">Item Name 1</option>
+										<option value="Item Name 2">Item Name 2</option>
+										<option value="Item Name 3">Item Name 3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-3">
+								<label for="price" class="form-label">Price</label>
+								<input type="text" class="inputBox" id="price" name="price" placeholder="Price">
+							</div>
+							<div class="col-3">
+								<label for="quantity" class="form-label">Quantity</label>
+								<input type="text" class="inputBox" id="quantity" name="quantity" placeholder="Quantity">
+							</div>
 						</div>
+						
+						<div class="row">
+							<div class="col mt-4 d-flex justify-content-start">
+								<input class="btnInit btnCream" type="submit" id="addItem" name="Add Item"
+									value="Add Item">
+								<input class="btnInit btnGreen text-light" type="submit" id="clearBtn" name="Create"
+									value="Clear">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<table id="showTable" class="table table-hover backTheam m-0">
+									<thead>
+										<tr style="background-color: #b4b3b3">
+											<th scope="col">Item Code</th>
+											<th scope="col">Item Name</th>
+											<th scope="col">Price</th>
+											<th scope="col">Quantity</th>
+											<th scope="col">Amount</th>
+											<th scope="col">Option</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="col">Item Code</td>
+											<td scope="col">Item Name</td>
+											<td scope="col">Price</td>
+											<td scope="col">Quantity</td>
+											<td scope="col">Amount</td>
+											<td scope="col">Option</td>
+										</tr>
+										<tr>
+											<td scope="col">Item Code</td>
+											<td scope="col">Item Name</td>
+											<td scope="col">Price</td>
+											<td scope="col">Quantity</td>
+											<td scope="col">Amount</td>
+											<td scope="col">Option</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			
 			<!------------------------------------------------------------ Second Section End ------------------------------------------------------------>
-
 
 			<!-- Footer -->
 			<footer class="footer-container">

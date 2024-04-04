@@ -13,7 +13,9 @@ $(document).ready(function() {
     document.getElementById('currentDate').innerHTML = formattedDate;
 
     
-    $('.dataTables_filter').hide();
+    $('#showTable').DataTable({
+        responsive: true // Enable responsive extension
+    });
 
     var table = $('#showTable').DataTable();
 
