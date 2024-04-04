@@ -26,12 +26,9 @@ switch ($action) {
             $orderDate = $_POST['orderDate'];  // Retrieve the order date
             $orderData = $_POST['orderData'];
             $totalEarning = $_POST['totalearning'];
+            insertOrderData($conn, $employeeId, $orderDate, $totalEarning, $orderData);
             echo json_encode([
-                "status" => "success",
-                "receivedOrderData" => $orderData,
-                "receivedEmployeeId" => $employeeId,
-                "receivedOrderDate" => $orderDate,
-                "totalEarning" => $totalEarning
+                "status" => "success"
             ]);
         } else {
             echo json_encode(["status" => "error", "message" => "No order data provided"]);

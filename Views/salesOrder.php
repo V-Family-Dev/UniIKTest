@@ -1,6 +1,6 @@
 <?php
 require '../include/auth.php';
-require '../functions/sales/salesFunctions.php';
+// require '../functions/sales/salesFunctions.php';
 
 
 ?>
@@ -35,7 +35,7 @@ require '../functions/sales/salesFunctions.php';
     <select id="itemSelect" style="width: 20%">
         <!-- Options will be dynamically loaded here -->
     </select>
-
+    <input type="hidden" id="selected-item-id">
     <div>
         <label for="item-name">Item Name</label>
         <input type="text" id="item-name" name="item-name" placeholder="Item Name">
@@ -56,8 +56,9 @@ require '../functions/sales/salesFunctions.php';
     <table id="mytable" class="display" border="1px solid">
         <thead>
             <tr>
-                <td>Item</td>
-                <td>Item Code</td>
+                <td>ItemId</td>
+                <td>ItemCode</td>
+                <td>Item Name</td>
                 <td>Unit Price </td>
                 <td>Quantity</td>
                 <td>Amount</td>
@@ -90,6 +91,13 @@ require '../functions/sales/salesFunctions.php';
             success: function(data) {
                 if (data.status === "success") {
                     empData = data.data; // Store the employee data
+                    $('#getempdata').append($('<option>', {
+                        value: '',
+                        text: '',
+                        disabled: true, // disable the placeholder option
+                        hidden: true, // hide the placeholder option
+                        selected: true // make it the selected option
+                    }));
                     empData.forEach(function(item) {
                         $('#getempdata').append(new Option(item.employee_no, item.id));
                     });
@@ -141,6 +149,13 @@ require '../functions/sales/salesFunctions.php';
 
             if (data.status === "success") {
                 itemsData = data.data; // Store the items data
+                $('#itemSelect').append($('<option>', {
+                    value: '',
+                    text: '', // no text needed as it's a hidden placeholder
+                    disabled: true, // disable the placeholder option
+                    hidden: true, // hide the placeholder option
+                    selected: true // make it the selected option
+                }));
                 itemsData.forEach(function(item) {
                     $('#itemSelect').append(new Option(item.item_code, item.Item_id));
                 });
@@ -158,19 +173,15 @@ require '../functions/sales/salesFunctions.php';
             console.error('Error in AJAX call:', textStatus, errorThrown);
         }
     });
-
-    // Event listener for when an item is selected in the dropdown
     $('#itemSelect').on('select2:select', function(e) {
         var selectedItemId = $(this).val();
-
-        // Find the selected item in the itemsData array
         var selectedItem = itemsData.find(item => item.Item_id == selectedItemId);
-
         if (selectedItem) {
-            // Populate the input fields
-            $('#item-name').val(selectedItem.Item_name); // Replace 'name' with the actual property name
-            // Replace 'quantity' with the actual property name
-            $('#item-price').val(selectedItem.price); // Replace 'price' with the actual property name
+            $('#item-name').val(selectedItem.Item_name);
+            $('#item-price').val(selectedItem.price);
+            $('#selected-item-id').val(selectedItem.Item_id);
+
+            // Set the hidden input value
         }
     });
 
@@ -179,7 +190,7 @@ require '../functions/sales/salesFunctions.php';
     function updateTotal() {
         var total = 0;
         $('#mytable tbody tr').each(function() {
-            var amount = parseFloat($(this).find('td:nth-child(5)').text()); // Assuming the amount is in the 5th column
+            var amount = parseFloat($(this).find('td:nth-child(6)').text()); // Assuming the amount is in the 5th column
             if (!isNaN(amount)) {
                 total += amount;
             }
@@ -191,7 +202,8 @@ require '../functions/sales/salesFunctions.php';
         event.preventDefault();
 
         // Retrieve values from the input fields and dropdown
-        var itemCode = $('#itemSelect').find(':selected').text(); // or val(), based on what you need
+        var itemId = $('#selected-item-id').val(); // Get the hidden item ID
+        var itemCode = $('#itemSelect').find(':selected').text();
         var itemName = $('#item-name').val();
         var itemQuantity = $('#item-quantity').val();
         var itemPrice = $('#item-price').val();
@@ -200,18 +212,20 @@ require '../functions/sales/salesFunctions.php';
         // Append a new row to the table
         $('#mytable tbody').append(
             '<tr>' +
-            '<td>' + itemName + '</td>' +
-            '<td class="itemCode">' + itemCode + '</td>' +
+            '<td  class="itemCode">' + itemId + '</td>' + // Include Item ID
+            '<td>' + itemCode + '</td>' +
+            '<td>' + itemName + '</td>' + // Include Item Name
             '<td>' + itemPrice + '</td>' +
             '<td class="itemQuantity">' + itemQuantity + '</td>' +
             '<td>' + itemAmount.toFixed(2) + '</td>' +
-            '<td><button class="editRow">Remove</button></td>' +
+            '<td><button class="editRow">Remove</button></td>' + // Include Remove button
             '</tr>'
         );
 
         updateTotal();
         // Clear the input fields after adding
         $('#item-name').val('');
+        $('#selected-item-id').val();
         $('#itemSelect').val(null).trigger('change');
         $('#item-price').val('');
         $('#item-quantity').val('');
@@ -239,7 +253,11 @@ require '../functions/sales/salesFunctions.php';
             },
             success: function(response) {
                 // Handle the response from the server
-                console.log('Server response:', response);
+                if (response.status === 'success') {
+                    alert('Order submitted successfully');
+                } else {
+                    console.error('Order submission failed:', response.message);
+                }
                 clearFormFields();
             },
             error: function(xhr, status, error) {
@@ -252,6 +270,7 @@ require '../functions/sales/salesFunctions.php';
     function clearFormFields() {
         // Reset input fields
         $('#item-name').val('');
+        $('#date').val('');
         $('#item-quantity').val('');
         $('#item-price').val('');
         $('#totalAmount').text('0.00');
@@ -294,6 +313,7 @@ require '../functions/sales/salesFunctions.php';
 
         });
         if (orderData.length > 0) {
+            console.log('Submitting order data:', empId, date, total, orderData);
             sendOrderData(empId, date, total, orderData); // Pass both employee ID and order data to the function
         } else {
             console.log('No items to submit');
