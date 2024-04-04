@@ -2916,14 +2916,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #212529;
-    background-color: #38d39f;
-    border-color: #06c283
+    background-color: #8CBC68;
+    border-color: #8CBC68
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #29bb8a;
-    border-color: #27b183
+    background-color: #79a15a;
+    border-color: #6d964d
 }
 
 .btn-primary.focus,
@@ -4320,8 +4320,8 @@ input[type=submit].btn-block {
 }
 
 .custom-checkbox .custom-control-input:indeterminate~.custom-control-label:before {
-    border-color: #38d39f;
-    background-color: #38d39f
+    border-color: #8CBC68;
+    background-color: #8CBC68
 }
 
 .custom-checkbox .custom-control-input:indeterminate~.custom-control-label:after {
@@ -4329,11 +4329,11 @@ input[type=submit].btn-block {
 }
 
 .custom-checkbox .custom-control-input:disabled:checked~.custom-control-label:before {
-    background-color: rgba(56, 211, 159, 0.5)
+    background-color: #8CBC68
 }
 
 .custom-checkbox .custom-control-input:disabled:indeterminate~.custom-control-label:before {
-    background-color: rgba(56, 211, 159, 0.5)
+    background-color: #8CBC68
 }
 
 .custom-radio .custom-control-label:before {
@@ -4345,7 +4345,7 @@ input[type=submit].btn-block {
 }
 
 .custom-radio .custom-control-input:disabled:checked~.custom-control-label:before {
-    background-color: rgba(56, 211, 159, 0.5)
+    background-color: #8CBC68
 }
 
 .custom-switch {

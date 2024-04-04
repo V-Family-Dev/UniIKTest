@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    // For example:
 
     const currentDate = new Date();
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -13,20 +12,7 @@ $(document).ready(function() {
 
     document.getElementById('currentDate').innerHTML = formattedDate;
 
-    $('[data-toggle=sidebar-colapse]').click(function () {
-        SidebarCollapse();
-    });
-
-    $('.menu-collapsed').toggleClass('d-block');
-    $('#sidebar-container').toggleClass('d-none');
-
-    function SidebarCollapse() {
-        $('.menu-collapsed').toggleClass('d-block');
-        $('#sidebar-container').toggleClass('d-block');
-
-        $('#collapse-icon').toggleClass('fa-bars fa-times');
-    }
-
+    
     $('.dataTables_filter').hide();
 
     var table = $('#showTable').DataTable();
