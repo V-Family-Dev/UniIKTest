@@ -1,9 +1,6 @@
 <?php
-// Set a custom session name
-session_name("myauthsession");
-
-// Start the session
 session_start();
+
 
 require "../../DB/dbconfig.php";
 require "../../functions/login/loginFunction.php";
@@ -14,11 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = hashs($password);
 
     if (empty($username) || empty($password)) {
+
         echo json_encode(array('error' => 'Please fill all the fields', 'status' => 'error'));
     } else {
         if (checkUserLogin($conn, $username, $password) == "1") {
-            session_regenerate_id();
-
             $data = fetchUserDetails($conn, $username, $password);
             $_SESSION['emp_acc'] = true;
             $_SESSION['emp_id'] = $data['employee_no'];
@@ -33,8 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $data = array('error' => 'not user emp ');
             if (adminUserLogin($conn, $username, $password) == "1") {
-                session_regenerate_id();
-
                 $data = fetchAdminDetails($conn, $username, $password);
                 $_SESSION['admin_acc'] = true;
                 $_SESSION['ad_id'] = $data['admin_id'];

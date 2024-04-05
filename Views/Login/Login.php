@@ -87,10 +87,10 @@ header("Expires: 0");
         data: formData,
         processData: false,
         contentType: false,
-
         success: function(response) {
-          console.log(response);
-          console.log("Raw response:", response);
+          console.log(response); // Log the raw response for debugging
+
+          // Parse the response as JSON if it's a string
           if (typeof response === "string") {
             try {
               response = JSON.parse(response);
@@ -99,27 +99,24 @@ header("Expires: 0");
               return;
             }
           }
+
           console.log("Success:", response.success);
           console.log("Status:", response.status);
           console.log("Location:", response.location);
+
+          // Check if the response indicates an error
           if (response.status == "error") {
             console.log("Error:", response.error);
           } else {
+            // Redirect based on the location provided in the response
             if (response.location == 2) {
-              window.location.href = "../../Views/index.php"; //add admin location
+              window.location.href = "../../admin/index.php"; // Redirect to admin page
             } else if (response.location == 1) {
-              window.location.href = "../../Views/index.php";
-
+              window.location.href = "../../employees/index.php"; // Redirect to employee page
             } else {
-              console.log("Error:", response.error);
+              console.error("Invalid location:", response.location);
             }
           }
-
-
-
-
-
-
         },
         error: function(xhr, status, error) {
           console.log(error);
