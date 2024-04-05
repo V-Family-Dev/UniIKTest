@@ -1,5 +1,6 @@
 <?php
 require "include/head.php";
+
 ?>
 
 <!------------------------------------------------------------ First Content Start ------------------------------------------------------------>
@@ -49,7 +50,7 @@ require "include/head.php";
 						</tr>
 					</thead>
 					<tbody>
-						
+
 					</tbody>
 				</table>
 			</div>
@@ -90,9 +91,7 @@ require "include/scriptlink.php";
 				return;
 			}
 
-			// Clear the table before making the AJAX request
-			$('#emp_s thead').empty();
-			$('#emp_s tbody').empty();
+			$('#showTable tbody').empty();
 
 			$.ajax({
 				url: '../../employees/getdata/getemptable.php',
@@ -102,48 +101,34 @@ require "include/scriptlink.php";
 					action: "search"
 				},
 				success: function(data) {
-
+					console.log(data);
 					var table = $('#showTable tbody');
-					var emp = JSON.parse(data);
-					var headerRow = $('<thead>');
-					headerRow.append('<tr>');
-					headerRow.append('<th scope="col">Name</th>');
-					headerRow.append('<th scope="col">NIC</th>');
-					headerRow.append('<th scope="col">Employee No</th>');
-					headerRow.append('<th scope="col">Mobile Number</th>');
-					headerRow.append('<th scope="col">City</th>');
-					headerRow.append('<ths cope="col">District</th>');
-					headerRow.append('<th scope="col">Bank Name</th>');
-					headerRow.append('<th scope="col">Edit</th>');
-					headerRow.append('<th scope="col">Inactive</th>');
+					var emp;
 
-					headerRow.append('<th scope="col">Password </th>');
-
-					headerRow.append('</tr>');
-					table.append(headerRow);
-
-					// Create table body
-					var tbody = $('<tbody>');
+					try {
+						emp = JSON.parse(data);
+					} catch (error) {
+						console.error('Error parsing JSON:', error);
+						return;
+					}
 
 					// Use forEach to iterate over the emp array
 					emp.forEach(function(employee) {
 						var row = $('<tr>');
 						row.append('<td>' + employee.Name + '</td>');
+						row.append('<td>' + employee['Employee No'] + '</td>'); // Assuming 'EmpNo' is correct
 						row.append('<td>' + employee.NIC + '</td>');
-						row.append('<td>' + employee['Employee No'] + '</td>');
-						row.append('<td>' + employee['Mobile Number'] + '</td>');
 						row.append('<td>' + employee.City + '</td>');
-						row.append('<td>' + employee.District + '</td>');
-						row.append('<td>' + employee['Bank Name'] + '</td>');
-						row.append('<td><button  class="btnTable btnYellow" data-empid="' + employee.empid + '" onclick="edit(this)">Edit</button></td>');
-						row.append('<td><button class="btnTable btnCream2" class="dpassword" data-empid="' + employee['Employee No'] + '">Inactive</button></td>');
-						row.append('<td><button  class="btnTable btnRed" class="cpassword" data-empid="' + employee['Employee No'] + '">Password</button></td>');
+						row.append('<td>' + employee.District + '</td>'); // Assuming 'Province' is correct
+						row.append('<td>' + employee['Bank Name'] + '</td>'); // Assuming 'Bank' is correct
+						row.append('<td>' + employee['Mobile_Number'] + '</td>'); // Assuming 'Mobile1' is correct
+						row.append('<td><button data-empid="' + employee.empid + '" onclick="edit(this)">Edit</button></td>');
+						row.append('<td><button class="dpassword" data-empid="' + employee['Employee No'] + '">Delete</button></td>');
+						row.append('<td><button class="cpassword" data-empid="' + employee['Employee No'] + '">Password</button></td>');
 
-						tbody.append(row);
+
+						table.append(row);
 					});
-
-					// Append tbody to table
-					table.append(tbody);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
 					console.log("error", textStatus, errorThrown);
@@ -152,6 +137,7 @@ require "include/scriptlink.php";
 		});
 	});
 </script>
+
 
 <script>
 	$(document).ready(function() {

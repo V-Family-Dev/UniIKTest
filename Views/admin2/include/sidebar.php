@@ -26,13 +26,13 @@
                     </a>
                     <ul class="collapse list-unstyled" id="EM">
                         <li>
-                            <a href="Create Employee.html">Create Employee</a>
+                            <a href="create_employee.php">Create Employee</a>
                         </li>
                         <li>
-                            <a href="Search Employee.html">Search Employee</a>
+                            <a href="searchemployee.php">Search Employee</a>
                         </li>
                         <li>
-                            <a href="Manage Employee.html">Manage Employee</a>
+                            <a href="manageemployee.php">Manage Employee</a>
                         </li>
                     </ul>
                 </li>

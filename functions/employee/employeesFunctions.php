@@ -8,7 +8,7 @@ function insertEmployee()
 {
 }
 
-function insettable($conn, $first_name, $last_name, $nic, $employee_no, $phone_no, $whatsapp_no, $Address, $postalCode, $branchCode, $accountHolderName, $AccountNum, $reference_id)
+function insettable($conn, $bank_id, $branchCode, $first_name, $last_name, $nic, $employee_no, $phone_no, $whatsapp_no, $Address, $postalCode, $accountHolderName, $AccountNum, $reference_id)
 {
 
     $first_name = test_input($first_name);
@@ -25,13 +25,19 @@ function insettable($conn, $first_name, $last_name, $nic, $employee_no, $phone_n
 
 
 
+
     if ($reference_id == "") {
         $reference_id = NULL;
     }
 
-    $sql = $conn->prepare("INSERT INTO `employee` (`employee_no`, `first_name`, `last_name`, `NIC`, `phone_no`, `whatsapp_no`, `BankCode`, `Address`, `postcode`, `AccountNum`, `holderName`, `reference_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $sql->bind_param("ssssssisssss", $employee_no, $first_name, $last_name, $nic, $phone_no, $whatsapp_no, $branchCode, $Address, $postalCode, $AccountNum, $accountHolderName, $reference_id);
+    $$sql = $conn->prepare("INSERT INTO `employee` (`employee_no`, `first_name`, `last_name`, `NIC`, `phone_no`, `whatsapp_no`, `BankCode`, `Address`, `postcode`, `AccountNum`, `holderName`, `reference_id`, `bank_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    if ($sql === false) {
+        return array("status" => "error", "message" => "Failed to prepare statement");
+    }
+    $sql->bind_param("ssssssisssssi", $employee_no, $first_name, $last_name, $nic, $phone_no, $whatsapp_no, $branchCode, $Address, $postalCode, $AccountNum, $accountHolderName, $reference_id, $bank_id);
     $sql->execute();
+
+
 
     $lastId = $sql->insert_id;
     if ($sql->affected_rows > 0) {

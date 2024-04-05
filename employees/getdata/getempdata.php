@@ -6,32 +6,25 @@ require_once '../../functions/employee/employeeditdunc.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'getempdata') {
 
     $emp_code = isset($_POST['empid']) ? $_POST['empid'] : '';
-    $getdata = "SELECT e.id AS 'empid', e.first_name AS 'f_Name', e.last_name AS 'l_name', e.NIC, e.employee_no AS 'Employee No', e.phone_no AS 'Mobile Number', ";
-    $getdata .= "e.whatsapp_no AS 'whastapp', e.Address AS 'Address', e.AccountNum As 'ac_no', e.holderName As 'h_name', c.name_en AS 'City', d.name_en AS 'District',e.postcode AS postcode ,";
-    $getdata .= "b.name AS 'Bank Name', bb.branchName,b.ID AS 'Bank_Id', bb.branchID  AS 'branch_id', p.id AS 'provinces_id',d.id AS district_id FROM employee e INNER JOIN bankbranches bb ON e.BankCode = bb.branchID ";
-    $getdata .= "INNER JOIN banks b ON bb.bankID = b.ID INNER JOIN cities c ON e.postcode = c.postcode INNER JOIN districts d ON c.district_id = d.id INNER JOIN provinces p ON d.province_id = p.id ";
-    $getdata .= "WHERE e.id = ?";
-    $query = $conn->prepare($getdata);
-    $query->bind_param('s', $emp_code);
-    $query->execute();
-    $result = $query->get_result();
-    $data = [];
-    $empIds = [];
+    $getdata = "SELECT e.id AS 'Employee ID', e.first_name AS 'First Name', e.last_name AS 'Last Name', e.NIC, e.employee_no AS 'Employee No', e.phone_no AS 'Phone Number', e.whatsapp_no AS 'WhatsApp Number', e.Address AS 'Address', e.AccountNum AS 'Account Number', e.holderName AS 'Account Holder Name', p.id AS 'Province ID', d.id AS 'District ID', c.postcode AS 'Postal Code', b.ID AS 'Bank ID', e.BankCode AS  'Branch ID' FROM employee e INNER JOIN cities c ON e.postcode = c.postcode INNER JOIN districts d ON c.district_id = d.id INNER JOIN provinces p ON d.province_id = p.id INNER JOIN bankbranches bb ON e.BankCode = bb.branchID INNER JOIN banks b ON e.bank_id = b.ID WHERE e.id = ?";
 
-    foreach ($result as $row) {
-        $empid = $row['empid'];
-        if (!in_array($empid, $empIds)) {
-            $empIds[] = $empid;
+    $query = $conn->prepare($getdata);
+    $query->bind_param('i', $emp_code); // Assuming emp_code is an integer
+    if ($query->execute()) {
+        $result = $query->get_result();
+        $data = [];
+
+        foreach ($result as $row) {
             $data[] = $row;
         }
+
+        echo json_encode($data);
+    } else {
+        // Handle query error
+        echo json_encode(['error' => 'Query failed']);
     }
-
-
-
-
-
-    echo json_encode($data);
 }
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'getpro') {
 
     $getdata = "SELECT `id`,`name_en` FROM `provinces`";
@@ -70,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'getbank') {
 
+
     $getdata = "SELECT `ID`,`name` FROM `banks`";
     $query = $conn->prepare($getdata);
     $query->execute();
@@ -83,8 +77,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'getbranch') {
 
-    $getdata = "SELECT `branchID`,`branchName` FROM `bankbranches`";
+    $query = $conn->prepare("SELECT `branchID`,`branchName`,`bankID` FROM `bankbranches`");
+
+    $query->execute();
+
+    $result = $query->get_result();
+    $branch = [];
+    foreach ($result as $row) {
+        $branch[] = $row;
+    }
+    echo json_encode($branch);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'getbranchs') {
+    $bankid = isset($_POST['bankID']) ? $_POST['bankID'] : '';
+
+    $getdata = "SELECT `branchID`,`branchName` FROM `bankbranches` WHERE `bankID`= ?";
+
     $query = $conn->prepare($getdata);
+    $query->bind_param('i', $bankid);
     $query->execute();
     $result = $query->get_result();
     $branch = [];
