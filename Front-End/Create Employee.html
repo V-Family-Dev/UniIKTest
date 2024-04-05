@@ -99,22 +99,18 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#sendSMS" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
-						role="button" aria-controls="sendSMS">
-						<i class="fas fa-user"></i>Send SMS
-					</a>
-					<ul class="collapse list-unstyled" id="sendSMS">
-						<li>
-							<a href="SMS by UserID.html">SMS by UserID</a>
-						</li>
-						<li>
-							<a href="SMS by Mobile No.html">SMS by Mobile No.</a>
-						</li>
-						<li>
-							<a href="Push Notification.html">Push Notification</a>
-						</li>
-					</ul>
-				</li>
+				<a href="#messages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+					role="button" aria-controls="messages">
+					<i class="fas fa-envelope"></i>Messages
+				</a>
+				<ul class="collapse list-unstyled" id="messages">
+					<li>
+						<a href="Send SMS.html">Send SMS</a>
+					</li>
+						<a href="Push Notification.html">Push Notification</a>
+					</li>
+				</ul>
+			</li>
 			</ul>
 
 		</nav>
@@ -230,16 +226,6 @@
 								</div>
 
                                 <div class="col-3">
-                                    <label for="townCity" class="form-label">Town/City</label>
-                                    <div class="inputBox">
-                                        <select class="inputBox" id="townCity">
-                                            <option value="" selected disabled>Select Town/City</option>
-                                            <option value="Town/City 1">Town/City 1</option>
-                                            <option value="Town/City 2">Town/City 2</option>
-                                            <option value="Town/City 3">Town/City 3</option>
-                                        </select>
-                                    </div>
-
                                     <label for="province" class="form-label">Province</label>
                                     <div class="inputBox">
                                         <select class="inputBox" id="province">
@@ -249,10 +235,8 @@
                                             <option value="province 3">Province 3</option>
                                         </select>
                                     </div>
-                                </div>
 
-                                <div class="col-3">
-                                    <label for="distName" class="form-label">District name</label>
+									<label for="distName" class="form-label">District name</label>
                                     <!-- <input type="text" class="inputBox" id="distName" name="District name"> -->
 									<div class="inputBox">
                                         <select class="inputBox" id="distName">
@@ -262,7 +246,19 @@
                                             <option value="District 3">District 3</option>
                                         </select>
                                     </div>
+                                </div>
 
+                                <div class="col-3">
+                                    <label for="townCity" class="form-label">Town/City</label>
+                                    <div class="inputBox">
+                                        <select class="inputBox" id="townCity">
+                                            <option value="" selected disabled>Select Town/City</option>
+                                            <option value="Town/City 1">Town/City 1</option>
+                                            <option value="Town/City 2">Town/City 2</option>
+                                            <option value="Town/City 3">Town/City 3</option>
+                                        </select>
+                                    </div>
+									
                                     <label for="postCode" class="form-label">Postal Code</label>
                                     <input class="inputBox" id="postCode" type="text" readonly>
 
