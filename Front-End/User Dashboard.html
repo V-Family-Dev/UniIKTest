@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Payments - UNIKONE SOLUTION</title>
+	<title>User Dashboard - UNIKONE SOLUTION</title>
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -22,114 +22,12 @@
 </head>
 
 <body>
-
-	<!-- Wrapper -->
 	<div class="wrapper">
-
-		<!-- Sidebar -->
-		<nav class="sidebar">
-
-			<!-- close sidebar menu -->
-
-			<div class="m-1">
-				<h3></h3>
-			</div>
-
-			<ul class="list-unstyled menu-elements">
-				<li class="">
-					<h4 class="ml-4">Menu</h4>
-					<div class="dismiss">
-						<i class="fas fa-times"></i>
-					</div>
-
-				</li>
-				<li>
-					<a href="#EM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
-						aria-controls="EM">
-						<i class="fas fa-user-plus"></i>Employee Master
-					</a>
-					<ul class="collapse list-unstyled" id="EM">
-						<li>
-							<a href="#">Create Employee</a>
-						</li>
-						<li>
-							<a href="#">Search Employee</a>
-						</li>
-						<li>
-							<a href="#">Manage User</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#CM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
-						aria-controls="CM">
-						<i class="fas fa-calculator"></i>Commision Master
-					</a>
-					<ul class="collapse list-unstyled" id="CM">
-						<li>
-							<a href="#">Level</a>
-						</li>
-						<li>
-							<a href="#">Payment</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#SM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
-						aria-controls="SM">
-						<i class="fas fa-receipt"></i>Sales Management
-					</a>
-					<ul class="collapse list-unstyled" id="SM">
-						<li>
-							<a href="#">Create Sale Order</a>
-						</li>
-						<li>
-							<a href="#">Create Sale Return</a>
-						</li>
-						<li>
-							<a href="#">Search</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#rPort" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
-						aria-controls="rPort">
-						<i class="fas fa-file"></i>Reports
-					</a>
-					<ul class="collapse list-unstyled" id="rPort">
-						<li>
-							<a href="#">Create Sale Order</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#sendSMS" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
-						role="button" aria-controls="sendSMS">
-						<i class="fas fa-user"></i>Send SMS
-					</a>
-					<ul class="collapse list-unstyled" id="sendSMS">
-						<li>
-							<a href="#">Send SMS</a>
-						</li>
-						<li>
-							<a href="#">Push Notification</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-
-		</nav>
-		<!-- End sidebar -->
-
-		<!-- Dark overlay -->
 		<div class="overlay"></div>
-
-		<!-- Content -->
 		<div class="content">
 
 			<nav id="naviBar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 				<div class="container-fluid">
-					<i class="fas fa-angle-double-right fa-sm mr-3 text-light open-menu" style="cursor:pointer;"></i>
 					<span class="comName">Dashboard</span>
 					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 						<span class="fas fa-user"></span>
@@ -154,7 +52,7 @@
 										<span style="font-size: 15px;">Marley Botosh</span>
 									</div>
 									<div class="d-flex justify-content-center">
-										<span style="font-size: 11px;">Administrator</span>
+										<span style="font-size: 11px;">User</span>
 									</div>
 								</div>
 							</li>
@@ -175,14 +73,13 @@
 			</nav>
 
 
-			<!------------------------------------------------------------ First Content Start ------------------------------------------------------------>
+
 			<div class="first-content">
 				<div class="container-fluid">
 					<div class="row pt-5 pl-3 pr-3">
 						<div class="col backTheam cRound p-4">
-							<p class="h1 text-light">Dilrukshan Jayawardene</p>
-							<input type="button" class="btnInit btnGreen text-light" Value="USC10300 Active"
-								style="Width:250px"></input>
+							<p class="h1" style="color: black;">Dilrukshan Jayawardene</p>
+							<input type="text" class="userLabel" Value="USC10300 Active" readonly></input>
 						</div>
 					</div>
 				</div>
@@ -194,8 +91,12 @@
 				<div class="row justify-content-center pt-4">
 					<div class="col-md-3 pt-3 cRound mt-3" style="background-color: rgb(241, 241, 241);">
 						<div class="cRound p-3" style="background-color: rgb(241, 220, 183);">
-							<div class="div"><h1 style="font-weight: 700;">LKR</h1></div>
-							<div class="div"><h3 style="font-weight: 700;">10,000,000.00</h3></div>
+							<div class="div">
+								<h1 style="font-weight: 700;">LKR</h1>
+							</div>
+							<div class="div">
+								<h3 style="font-weight: 700;">10,000,000.00</h3>
+							</div>
 						</div>
 						<div>
 							<h5>Total<br>Earnings</h5>
@@ -203,8 +104,12 @@
 					</div>
 					<div class="col-md-3 pt-3 cRound  mt-3" style="background-color: rgb(241, 241, 241);">
 						<div class="cRound p-3" style="background-color: #c0ec9f;">
-							<div class="div"><h1 style="font-weight: 700;">LKR</h1></div>
-							<div class="div"><h3 style="font-weight: 700;">10,000,000.00</h3></div>
+							<div class="div">
+								<h1 style="font-weight: 700;">LKR</h1>
+							</div>
+							<div class="div">
+								<h3 style="font-weight: 700;">10,000,000.00</h3>
+							</div>
 						</div>
 						<div>
 							<h5>Total Paid<br>Earnings</h5>
@@ -212,8 +117,12 @@
 					</div>
 					<div class="col-md-3 pt-3 cRound  mt-3" style="background-color: rgb(241, 241, 241);">
 						<div class="cRound p-3" style="background-color: rgba(245, 165, 165, 0.8);">
-							<div class="div"><h1 style="font-weight: 700;">LKR</h1></div>
-							<div class="div"><h3 style="font-weight: 700;">10,000,000.00</h3></div>
+							<div class="div">
+								<h1 style="font-weight: 700;">LKR</h1>
+							</div>
+							<div class="div">
+								<h3 style="font-weight: 700;">10,000,000.00</h3>
+							</div>
 						</div>
 						<div>
 							<h5>Pending<br>Payments</h5>
@@ -227,7 +136,9 @@
 				<div class="row justify-content-center pt-4">
 					<div class="col-md-5 pt-3 cRound" style="background-color: rgb(241, 241, 241);">
 						<div>
-							<div class="div"><h3 style="font-weight: 700;">Sale Code & Level</h3></div>
+							<div class="div">
+								<h3 style="font-weight: 700;">Sale Code & Items</h3>
+							</div>
 						</div>
 						<input class="btnInit btnCream2" type="submit" id="show" name="show" value="Show">
 					</div>
@@ -241,7 +152,7 @@
 						<table id="showTable" class="table table-hover backTheam">
 							<thead>
 								<tr style="background-color: #b4b3b3">
-									<th scope="col">Level</th>
+									<th scope="col">Items</th>
 									<th scope="col">Sale Code</th>
 									<th scope="col">Commision</th>
 								</tr>
@@ -259,19 +170,8 @@
 			</div>
 			<!------------------------------------------------------------ Forth Section End ------------------------------------------------------------>
 
-			<!-- Footer -->
-			<footer class="footer-container">
-
 		</div>
 	</div>
-
-	</footer>
-
-	</div>
-	<!-- End content -->
-
-	</div>
-	<!-- End wrapper -->
 
 	<!-- Javascript -->
 	<script src="assets/js/jquery-3.3.1.min.js"></script>

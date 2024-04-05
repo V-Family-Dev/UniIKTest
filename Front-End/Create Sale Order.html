@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Level - UNIKONE SOLUTION</title>
+	<title>Create Sale Order - UNIKONE SOLUTION</title>
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -56,21 +56,21 @@
 							<a href="Search Employee.html">Search Employee</a>
 						</li>
 						<li>
-							<a href="Manage User.html">Manage User</a>
+							<a href="Manage Employee.html">Manage Employee</a>
 						</li>
 					</ul>
 				</li>
 				<li>
 					<a href="#CM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
 						aria-controls="CM">
-						<i class="fas fa-calculator"></i>Commision Master
+						<i class="fas fa-calculator"></i>Item Master
 					</a>
 					<ul class="collapse list-unstyled" id="CM">
 						<li>
-							<a href="Level.html">Level</a>
+							<a href="Items.html">Items</a>
 						</li>
 						<li>
-							<a href="Payments.html">Payment</a>
+							<a href="Payments.html">Payments</a>
 						</li>
 					</ul>
 				</li>
@@ -84,10 +84,7 @@
 							<a href="Create Sale Order.html">Create Sale Order</a>
 						</li>
 						<li>
-							<a href="Create Sale Return.html">Create Sale Return</a>
-						</li>
-						<li>
-							<a href="Search Employee.html">Search</a>
+							<a href="Search Sale Orders.html">Search Sale Orders</a>
 						</li>
 					</ul>
 				</li>
@@ -145,12 +142,6 @@
 								<i class="fa fa-calendar fa-lg mr-2" style="font-size: 18px;"></i>
 								<span id="currentDate" class="bd-highlight align-self-center">[Current date]</span>
 							</li>
-							<li class="naviIcon ml-3" style="font-size: 100%;">
-								<a class="noUnderline mr-2 ml-2" href="#">
-									<i class="fa fa-bell" style="font-size: 23px;"></i>
-									<span class="badge rounded-pill badge-notification bg-danger">10 </span>
-								</a>
-							</li>
 							<li class="naviIcon ml-2">
 								<div class="mr-2 ml-2">
 									<div>
@@ -181,55 +172,47 @@
 			<div class="first-content">
 				<div class="container-fluid">
 					<div class="row pt-5 pl-3 pr-3">
-						<h5 class="mb-1 ml-2">Level</h5>
+
+						<h5 class="mb-1">Create Sale Order</h5>
 
 						<div class="col-12 backTheam cRound p-4">
 							<div class="row">
-								<div class="col-2">
-									<label for="commiCode" class="form-label">Commission Code</label>
-									<input class="inputBox" id="commiCode" type="text" placeholder="Commission Code">
+								<div class="col-3">
+									<label for="salesEmpID" class="form-label">Sales Employee ID</label>
+									<div class="inputBox">
+										<select class="inputBox" id="salesEmpID">
+											<option value="" selected disabled>Select Item Code</option>
+											<option value="Employee ID 1">Employee ID 1</option>
+											<option value="Employee ID 2">Employee ID 2</option>
+											<option value="Employee ID 3">Employee ID 3</option>
+										</select>
+									</div>
 								</div>
-								<div class="col-2">
-									<label for="commiName" class="form-label">Name</label>
-									<input class="inputBox" id="commiName" type="text" placeholder="Commission Name">
+								<div class="col-3">
+									<label for="contPerson" class="form-label">Contact Person</label>
+									<input type="text" class="inputBox" id="contPerson" name="contPerson" placeholder="Contact Person" readonly>
 								</div>
-								<div class="col-2">
-									<label for="price" class="form-label">Price</label>
-									<input class="inputBox" id="price" type="text" placeholder="Price Amount">
+								<div class="col-3">
+									<label for="mobNumber" class="form-label">Mobile Number</label>
+									<input type="text" class="inputBox" id="mobNumber" name="mobNumber" placeholder="Mobile Number" readonly>
 								</div>
-								<div class="col-1">
-									<label for="level1" class="form-label">LV 01</label>
-									<input class="inputBox" id="level1" type="text" placeholder="Value">
-								</div>
-								<div class="col-1">
-									<label for="level2" class="form-label">LV 02</label>
-									<input class="inputBox" id="level2" type="text" placeholder="Value">
-								</div>
-								<div class="col-1">
-									<label for="level3" class="form-label">LV 03</label>
-									<input class="inputBox" id="level3" type="text" placeholder="Value">
-								</div>
-								<div class="col-1">
-									<label for="level4" class="form-label">LV 04</label>
-									<input class="inputBox" id="level4" type="text" placeholder="Value">
-								</div>
-								<div class="col-1">
-									<label for="level5" class="form-label">LV 05</label>
-									<input class="inputBox" id="level5" type="text" placeholder="Value">
-								</div>
-								<div class="col-1">
-									<label for="level6" class="form-label">LV 06</label>
-									<input class="inputBox" id="level6" type="text" placeholder="Value">
+								<div class="col-3">
+									<label for="city" class="form-label">City</label>
+									<input type="text" class="inputBox" id="city" name="city" placeholder="City" readonly>
 								</div>
 							</div>
-
-
-							<div class="col mt-4 d-flex justify-content-start">
-								<div class="row">
-									<input class="btnInit btnGreen text-light" type="submit" id="createBtn"
-										name="Create" value="Create">
-									<input class="btnInit btnBlack text-light" type="submit" id="clearBtn" name="Create"
-										value="Clear">
+							<div class="row mt-3">
+								<div class="col-4">
+									<label for="address" class="form-label">Address</label>
+									<div class="input-group">
+										<textarea id="address" name="address" class="form-control textArea" rows="3" cols="50" style="width: calc(100% - 2rem);"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-3">
+									<label for="saleDate" class="form-label">Sale Date</label>
+									<input type="date" class="inputBox" id="saleDate" name="saleDate">
 								</div>
 							</div>
 						</div>
@@ -242,80 +225,85 @@
 
 			<div class="container-fluid">
 				<div class="row p-3">
-					<div class="col p-5 cRound " style="background-color: rgb(223, 222, 222);">
-						<div class="row">
-							<div class="input-group ml-3 justify-content-start">
-								<div class="searchIcon fa fa-search d-flex align-items-center"
-									style="width: 38px; height: 38px;"></div>
-								<input id="searchBox" type="text" class="searchBox cRound mr-2"
-									placeholder="Search..." style="width: 30%;">
-								<input id="searchBtn" class="btnInit btnGreen text-light" type="submit"
-									value="Search">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col mt-3 d-flex justify-content-start">
-								<input id="loadActive" class="btnInit btnGray" type="submit" value="Load Active"
-									style="width: auto;">
-								<input id="loadInactive" class="btnInit btnGray" type="submit" value="Load Inactive"
-									style="width: auto;">
-							</div>
-						</div>
 
+					<h5 class="mb-1">Sale Order Items</h5>
+
+					<div class="col-12 backTheam cRound p-4"  style="background-color: rgb(223, 222, 222);">
 						<div class="row">
-							<div class="col mt-2">
-								<table id="showTable" class="table table-hover mt-3 backTheam">
+							<div class="col-3">
+								<label for="itemCode" class="form-label">Item Code</label>
+								<div class="inputBox">
+									<select class="inputBox" id="itemCode">
+										<option value="" selected disabled>Select Item Code</option>
+										<option value="Item Code 1">Item Code 1</option>
+										<option value="Item Code 2">Item Code 2</option>
+										<option value="Item Code 3">Item Code 3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-3">
+								<label for="itemName" class="form-label">Item Name</label>
+								<div class="inputBox">
+									<select class="inputBox" id="itemName">
+										<option value="" selected disabled>Select Item Name</option>
+										<option value="Item Name 1">Item Name 1</option>
+										<option value="Item Name 2">Item Name 2</option>
+										<option value="Item Name 3">Item Name 3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-3">
+								<label for="price" class="form-label">Price</label>
+								<input type="text" class="inputBox" id="price" name="price" placeholder="Price">
+							</div>
+							<div class="col-3">
+								<label for="quantity" class="form-label">Quantity</label>
+								<input type="text" class="inputBox" id="quantity" name="quantity" placeholder="Quantity">
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col mt-4 d-flex justify-content-start">
+								<input class="btnInit btnGreen text-light" type="submit" id="addMore" name="Add more"
+									value="Add more">
+								<input class="btnInit btnCream2" type="submit" id="submit" name="Submit"
+									value="Submit">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col mt-3">
+								<table id="showTable" class="table table-hover backTheam m-0">
 									<thead>
 										<tr style="background-color: #b4b3b3">
-											<th scope="col">Code</th>
-											<th scope="col">Name</th>
-											<th scope="col">Price</th>
-											<th scope="col">LV 01</th>
-											<th scope="col">LV 02</th>
-											<th scope="col">LV 03</th>
-											<th scope="col">LV 04</th>
-											<th scope="col">LV 05</th>
-											<th scope="col">LV 06</th>
+											<th scope="col">Item ID</th>
+											<th scope="col">Item Code</th>
+											<th scope="col">Item Name</th>
+											<th scope="col">Unit Price</th>
+											<th scope="col">Quantity</th>
+											<th scope="col">Amount</th>
 											<th scope="col">Option</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td>COM02</td>
-											<td>link click</td>
-											<td>100</td>
-											<td>50</td>
-											<td>10</td>
-											<td>10</td>
-											<td>10</td>
-											<td>10</td>
-											<td>10</td>
+											<td scope="col">Item ID</td>
+											<td scope="col">Item Code</td>
+											<td scope="col">Item Name</td>
+											<td scope="col">Unit Price</td>
+											<td scope="col">Quantity</td>
+											<td scope="col">Amount</td>
 											<td>
-												<input id="editBtn" class="btnYellow btnTable" type="submit"
-													value="Edit">
-												<input id="inactiveBtn" class="btnRed btnTable" type="submit"
-													value="Inactive">
-											</td>
-										</tr>
-										<tr>
-											<td>ZCO02</td>
-											<td>post upload</td>
-											<td>50</td>
-											<td>25</td>
-											<td>5</td>
-											<td>5</td>
-											<td>5</td>
-											<td>5</td>
-											<td>5</td>
-											<td>
-												<input id="editBtn2" class="btnYellow btnTable" type="submit"
-													value="Edit">
-												<input id="activeBtn" class="btnCream btnTable" type="submit"
-													value="Active">
+												<input id="removeBtn" class="btnRed btnTable" type="submit"
+													value="Remove">
 											</td>
 										</tr>
 									</tbody>
 								</table>
+								<div class="d-flex justify-content-end mr-5">
+									<div class="mr-5 pr-5">
+										<h4 style="color: rgb(212, 0, 0);">Total Amount: &emsp;</h4>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
