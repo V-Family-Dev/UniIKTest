@@ -100,22 +100,18 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#sendSMS" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
-						role="button" aria-controls="sendSMS">
-						<i class="fas fa-user"></i>Send SMS
-					</a>
-					<ul class="collapse list-unstyled" id="sendSMS">
-						<li>
-							<a href="SMS by UserID.html">SMS by UserID</a>
-						</li>
-						<li>
-							<a href="SMS by Mobile No.html">SMS by Mobile No.</a>
-						</li>
-						<li>
-							<a href="Push Notification.html">Push Notification</a>
-						</li>
-					</ul>
-				</li>
+				<a href="#messages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+					role="button" aria-controls="messages">
+					<i class="fas fa-envelope"></i>Messages
+				</a>
+				<ul class="collapse list-unstyled" id="messages">
+					<li>
+						<a href="Send SMS.html">Send SMS</a>
+					</li>
+						<a href="Push Notification.html">Push Notification</a>
+					</li>
+				</ul>
+			</li>
 			</ul>
 
 		</nav>
@@ -177,7 +173,7 @@
 
 						<div class="col-12 backTheam cRound p-4">
 							<div class="row">
-								<div class="col-3">
+								<div class="col-md-4">
 									<label for="salesEmpID" class="form-label">Sales Employee ID</label>
 									<div class="inputBox">
 										<select class="inputBox" id="salesEmpID">
@@ -188,21 +184,17 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-3">
+								<div class="col-md-4">
 									<label for="contPerson" class="form-label">Contact Person</label>
 									<input type="text" class="inputBox" id="contPerson" name="contPerson" placeholder="Contact Person" readonly>
 								</div>
-								<div class="col-3">
+								<div class="col-md-4">
 									<label for="mobNumber" class="form-label">Mobile Number</label>
 									<input type="text" class="inputBox" id="mobNumber" name="mobNumber" placeholder="Mobile Number" readonly>
 								</div>
-								<div class="col-3">
-									<label for="city" class="form-label">City</label>
-									<input type="text" class="inputBox" id="city" name="city" placeholder="City" readonly>
-								</div>
 							</div>
 							<div class="row mt-3">
-								<div class="col-4">
+								<div class="col-md-4">
 									<label for="address" class="form-label">Address</label>
 									<div class="input-group">
 										<textarea id="address" name="address" class="form-control textArea" rows="3" cols="50" style="width: calc(100% - 2rem);"></textarea>
@@ -210,7 +202,7 @@
 								</div>
 							</div>
 							<div class="row mt-3">
-								<div class="col-3">
+								<div class="col-md-4">
 									<label for="saleDate" class="form-label">Sale Date</label>
 									<input type="date" class="inputBox" id="saleDate" name="saleDate">
 								</div>
@@ -230,7 +222,7 @@
 
 					<div class="col-12 backTheam cRound p-4"  style="background-color: rgb(223, 222, 222);">
 						<div class="row">
-							<div class="col-3">
+							<div class="col-md-3">
 								<label for="itemCode" class="form-label">Item Code</label>
 								<div class="inputBox">
 									<select class="inputBox" id="itemCode">
@@ -241,7 +233,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3">
 								<label for="itemName" class="form-label">Item Name</label>
 								<div class="inputBox">
 									<select class="inputBox" id="itemName">
@@ -252,11 +244,11 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3">
 								<label for="price" class="form-label">Price</label>
 								<input type="text" class="inputBox" id="price" name="price" placeholder="Price">
 							</div>
-							<div class="col-3">
+							<div class="col-md-3">
 								<label for="quantity" class="form-label">Quantity</label>
 								<input type="text" class="inputBox" id="quantity" name="quantity" placeholder="Quantity">
 							</div>

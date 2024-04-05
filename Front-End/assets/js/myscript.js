@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     const currentDate = new Date();
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -12,18 +12,18 @@ $(document).ready(function() {
 
     document.getElementById('currentDate').innerHTML = formattedDate;
 
-    
+
     $('#showTable').DataTable({
         responsive: true // Enable responsive extension
     });
 
     var table = $('#showTable').DataTable();
 
-    $('#searchBtn').on('click', function() {
+    $('#searchBtn').on('click', function () {
         performSearch();
     });
 
-    $('#searchBox').on('keydown', function(e) {
+    $('#searchBox').on('keydown', function (e) {
         if (e.keyCode === 13) { // Check if Enter key is pressed
             performSearch();
         }
