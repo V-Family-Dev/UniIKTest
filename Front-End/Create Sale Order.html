@@ -95,23 +95,25 @@
 					</a>
 					<ul class="collapse list-unstyled" id="rPort">
 						<li>
-							<a href="Create Sale Order.html">Create Sale Order</a>
+							<a href="#">Create Sale Order</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-				<a href="#messages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
-					role="button" aria-controls="messages">
-					<i class="fas fa-envelope"></i>Messages
-				</a>
-				<ul class="collapse list-unstyled" id="messages">
-					<li>
-						<a href="Send SMS.html">Send SMS</a>
-					</li>
+					<a href="#messages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+						role="button" aria-controls="messages">
+						<i class="fas fa-envelope"></i>Messages
+					</a>
+					<ul class="collapse list-unstyled" id="messages">
+						<li>
+							<a href="Send SMS.html">Send SMS</a>
+						</li>
 						<a href="Push Notification.html">Push Notification</a>
-					</li>
-				</ul>
-			</li>
+					</ul>
+				</li>
+				<li>
+					<a href="UpgradeDowngrade.html"><i class="fa fa-sort "></i>Upgrade/Downgrade</a>
+				</li>
 			</ul>
 
 		</nav>
@@ -153,6 +155,7 @@
 									id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">
 									<i class="fa fa-user-circle" style="font-size: 23px;"></i>
+								</a>
 									<div class="dropdown-menu dropdown-menu-right"
 										aria-labelledby="navbarDropdownProfile">
 										<a class="dropdown-item" href="#">Logout</a>
@@ -186,18 +189,21 @@
 								</div>
 								<div class="col-md-4">
 									<label for="contPerson" class="form-label">Contact Person</label>
-									<input type="text" class="inputBox" id="contPerson" name="contPerson" placeholder="Contact Person" readonly>
+									<input type="text" class="inputBox" id="contPerson" name="contPerson"
+										placeholder="Contact Person" readonly>
 								</div>
 								<div class="col-md-4">
 									<label for="mobNumber" class="form-label">Mobile Number</label>
-									<input type="text" class="inputBox" id="mobNumber" name="mobNumber" placeholder="Mobile Number" readonly>
+									<input type="text" class="inputBox" id="mobNumber" name="mobNumber"
+										placeholder="Mobile Number" readonly>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-4">
 									<label for="address" class="form-label">Address</label>
 									<div class="input-group">
-										<textarea id="address" name="address" class="form-control textArea" rows="3" cols="50" style="width: calc(100% - 2rem);"></textarea>
+										<textarea id="address" name="address" class="form-control textArea" rows="3"
+											cols="50" style="width: calc(100% - 2rem);"></textarea>
 									</div>
 								</div>
 							</div>
@@ -220,7 +226,7 @@
 
 					<h5 class="mb-1">Sale Order Items</h5>
 
-					<div class="col-12 backTheam cRound p-4"  style="background-color: rgb(223, 222, 222);">
+					<div class="col-12 backTheam cRound p-4" style="background-color: rgb(223, 222, 222);">
 						<div class="row">
 							<div class="col-md-3">
 								<label for="itemCode" class="form-label">Item Code</label>
@@ -250,16 +256,16 @@
 							</div>
 							<div class="col-md-3">
 								<label for="quantity" class="form-label">Quantity</label>
-								<input type="text" class="inputBox" id="quantity" name="quantity" placeholder="Quantity">
+								<input type="text" class="inputBox" id="quantity" name="quantity"
+									placeholder="Quantity">
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="col mt-4 d-flex justify-content-start">
 								<input class="btnInit btnGreen text-light" type="submit" id="addMore" name="Add more"
 									value="Add more">
-								<input class="btnInit btnCream2" type="submit" id="submit" name="Submit"
-									value="Submit">
+								<input class="btnInit btnCream2" type="submit" id="submit" name="Submit" value="Submit">
 							</div>
 						</div>
 						<div class="row">
@@ -303,16 +309,8 @@
 			</div>
 			<!------------------------------------------------------------ Second Section End ------------------------------------------------------------>
 
-			<!-- Footer -->
-			<footer class="footer-container">
-
 		</div>
-	</div>
-
-	</footer>
-
-	</div>
-	<!-- End content -->
+		<!-- End content -->
 
 	</div>
 	<!-- End wrapper -->

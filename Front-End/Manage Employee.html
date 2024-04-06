@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="assets/css/animate.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/media-queries.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css"/>
+	<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
 	<link rel="stylesheet" href="assets/css/mycss.css">
 
 </head>
@@ -95,23 +95,26 @@
 					</a>
 					<ul class="collapse list-unstyled" id="rPort">
 						<li>
-							<a href="Create Sale Order.html">Create Sale Order</a>
+							<a href="#">Create Sale Order</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-				<a href="#messages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
-					role="button" aria-controls="messages">
-					<i class="fas fa-envelope"></i>Messages
-				</a>
-				<ul class="collapse list-unstyled" id="messages">
-					<li>
-						<a href="Send SMS.html">Send SMS</a>
-					</li>
+					<a href="#messages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+						role="button" aria-controls="messages">
+						<i class="fas fa-envelope"></i>Messages
+					</a>
+					<ul class="collapse list-unstyled" id="messages">
+						<li>
+							<a href="Send SMS.html">Send SMS</a>
+						</li>
 						<a href="Push Notification.html">Push Notification</a>
-					</li>
-				</ul>
-			</li>
+
+					</ul>
+				</li>
+				<li>
+					<a href="UpgradeDowngrade.html"><i class="fa fa-sort "></i>Upgrade/Downgrade</a>
+				</li>
 			</ul>
 
 		</nav>
@@ -153,6 +156,7 @@
 									id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">
 									<i class="fa fa-user-circle" style="font-size: 23px;"></i>
+								</a>
 									<div class="dropdown-menu dropdown-menu-right"
 										aria-labelledby="navbarDropdownProfile">
 										<a class="dropdown-item" href="#">Logout</a>
@@ -173,12 +177,12 @@
 							<!-- Section rectangle inside -->
 							<div class="col backTheam cRound p-4">
 								<div class="row pb-2 pt-2">
-		
+
 									<div class="col-md-6">
 										<label for="username" class="form-label">Username</label>
 										<input class="inputBox" id="username" type="text" placeholder="Username">
 									</div>
-		
+
 								</div>
 								<div class="row pb-2 pt-2">
 									<div class="col-md-6">
@@ -215,7 +219,8 @@
 								</div>
 								<div class="row pb-2 pt-2">
 									<div class="col-3 d-flex justify-content-start">
-										<input class="btnInit btnGreen text-light" id="createBtn" type="Submit" value="Create">
+										<input class="btnInit btnGreen text-light" id="createBtn" type="Submit"
+											value="Create">
 									</div>
 								</div>
 							</div>
@@ -231,42 +236,42 @@
 				<div class="row">
 
 					<h5 class="mb-1 ml-4 mt-4">Area Acess</h5>
-						<div class="col-12">
-							<!-- Section rectangle inside -->
-							<div class="col backTheam cRound p-4">
-								
-								<div class="row pb-2 pt-2 ml-0">
-									<!-- MU - Manage Employee -->
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_EM" type="checkbox">
-											<label for="MU_EM" class="form-label ml-2"><strong>EM</strong></label>
-										</div>
+					<div class="col-12">
+						<!-- Section rectangle inside -->
+						<div class="col backTheam cRound p-4">
+
+							<div class="row pb-2 pt-2 ml-0">
+								<!-- MU - Manage Employee -->
+								<div class="col-sm-1">
+									<div class="row">
+										<input id="MU_EM" type="checkbox">
+										<label for="MU_EM" class="form-label ml-2"><strong>EM</strong></label>
 									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_CM" type="checkbox">
-											<label for="MU_CM" class="form-label ml-2"><strong>CM</strong></label>
-										</div>
+								</div>
+								<div class="col-sm-1">
+									<div class="row">
+										<input id="MU_CM" type="checkbox">
+										<label for="MU_CM" class="form-label ml-2"><strong>CM</strong></label>
 									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_SM" type="checkbox">
-											<label for="MU_SM" class="form-label ml-2"><strong>SM</strong></label>
-										</div>
+								</div>
+								<div class="col-sm-1">
+									<div class="row">
+										<input id="MU_SM" type="checkbox">
+										<label for="MU_SM" class="form-label ml-2"><strong>SM</strong></label>
 									</div>
-									<div class="col-sm-1">
-										<div class="row">
-											<input id="MU_SS" type="checkbox">
-											<label for="MU_SS" class="form-label ml-2"><strong>SS</strong></label>
-										</div>
+								</div>
+								<div class="col-sm-1">
+									<div class="row">
+										<input id="MU_SS" type="checkbox">
+										<label for="MU_SS" class="form-label ml-2"><strong>SS</strong></label>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
 				</div>
 			</div>
-			
+
 			<!------------------------------------------------------------ Second Section End ------------------------------------------------------------>
 			<!------------------------------------------------------------ Second Section Start ------------------------------------------------------------>
 
@@ -280,8 +285,7 @@
 									style="width: 38px; height: 38px;"></div>
 								<input id="searchBox" type="search" class="searchBox cRound mr-2"
 									placeholder="Search..." style="width: 30%;">
-								<input id="searchBtn" class="btnInit btnGreen text-light" type="submit"
-									value="Search">
+								<input id="searchBtn" class="btnInit btnGreen text-light" type="submit" value="Search">
 							</div>
 						</div>
 						<div class="row">
@@ -296,39 +300,31 @@
 								<thead>
 									<tr style="background-color: #b4b3b3">
 										<th scope="col">Username</th>
-                                        <th scope="col">Password</th>
-                                        <th scope="col">Access Area</th>
-                                        <th scope="col">Action</th>
+										<th scope="col">Password</th>
+										<th scope="col">Access Area</th>
+										<th scope="col">Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td>Dilrukshan Jayawardane</td>
-                                        <td>USD10300</td>
-                                        <td>EM,CM,SM</td>
-                                        <td>
-											<input class="btnTable btnYellow" type="submit" id="editBtn" name="editBtn" value="Edit" style="width: 60px;">
+										<td>USD10300</td>
+										<td>EM,CM,SM</td>
+										<td>
+											<input class="btnTable btnYellow" type="submit" id="editBtn" name="editBtn"
+												value="Edit" style="width: 60px;">
 										</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
+					</div>
 				</div>
 			</div>
-			
 			<!------------------------------------------------------------ Second Section End ------------------------------------------------------------>
 
-
-			<!-- Footer -->
-			<footer class="footer-container">
-
 		</div>
-	</div>
-
-	</footer>
-
-	</div>
-	<!-- End content -->
+		<!-- End content -->
 
 	</div>
 	<!-- End wrapper -->

@@ -212,6 +212,10 @@ td {
     border-collapse: collapse;
 }
 
+td{
+    font-weight: 500;
+}
+
 .userLabel {
     width: 250px;
     background-color: rgb(60, 173, 79);
