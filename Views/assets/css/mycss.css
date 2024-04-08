@@ -1,0 +1,265 @@
+a,
+a.noUnderline {
+    text-decoration: none;
+}
+
+a,
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* back tray color */
+.backTheam {
+    background-color: #8CBC68;
+}
+
+/* Button styles */
+.btnInit {
+    color: #000000;
+    outline: none;
+    border-color: rgb(255, 255, 255, 0);
+    border-radius: 10px;
+    font-weight: 500;
+    width: 120px;
+    margin: 0px 5px;
+}
+
+.btnTable {
+    color: #000000;
+    outline: none;
+    border-color: rgb(255, 255, 255, 0);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    height: 30px;
+}
+
+.btnInit:active {
+    background-color: rgba(136, 255, 209, 0.5);
+    border-color: rgba(0, 0, 0, 0.5);
+    color: #000000;
+
+}
+
+/* btn colors */
+.btnBlack {
+    background-color: rgb(59, 59, 61);
+    border-color: rgb(59, 59, 61);
+}
+
+.btnGreen {
+    background-color: rgb(38, 106, 49);
+    border-color: rgb(55, 146, 70);
+}
+
+.btnYellow {
+    background-color: rgb(226, 166, 64);
+    border-color: rgb(226, 166, 64);
+}
+
+.btnGray {
+    background-color: rgb(172, 172, 172);
+    border-color: rgb(172, 172, 172);
+}
+
+.btnRed {
+    background-color: rgba(250, 140, 140, 0.8);
+    border-color: rgb(250, 140, 140);
+}
+
+.btnCream {
+    background-color: rgb(244, 248, 179);
+    border-color: rgb(248, 226, 179);
+}
+
+.btnCream2 {
+    background-color: rgb(241, 220, 183);
+    border-color: rgb(241, 220, 183);
+}
+
+.btnCream2:active {
+    background-color: rgb(216, 198, 166);
+    border-color: rgb(241, 220, 183);
+}
+
+.btnBlack:active {
+    background-color: rgba(87, 87, 87, 0.8);
+    border-color: rgb(87, 87, 87, 0.8);
+}
+
+.btnGreen:active {
+    background-color: #b5d89b;
+    border-color: #5d7c46;
+}
+
+.btnYellow:active {
+    background-color: rgb(226, 166, 64, 0.8);
+    border-color: rgb(226, 166, 64, 0.8);
+}
+
+.btnGray:active {
+    background-color: rgb(217, 217, 217, 0.8);
+    border-color: rgb(217, 217, 217, 0.8);
+}
+
+.btnRed:active {
+    background-color: rgb(255, 0, 0, 0.8);
+    border-color: rgb(255, 0, 0, 0.8);
+}
+
+.btnCream:active {
+    background-color: rgb(226, 224, 72);
+    border-color: rgb(252, 247, 0, 0.8);
+}
+
+.dataTable {
+    width: 100% !important;
+}
+
+.comName {
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.cRound {
+    border-radius: 15px;
+}
+
+#dt-search-0,
+label[for="dt-search-0"] {
+    display: none;
+}
+
+.fbolt {
+    font-weight: 500;
+}
+
+.first-content {
+    margin-top: 50px;
+}
+
+.inputBox {
+    border: none;
+    outline-color: #266A31;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 0px 10px;
+    font-size: 15px;
+    width: 100%;
+    height: 30px;
+}
+
+label {
+    color: black;
+    font-weight: 400;
+    display: flex;
+    margin-bottom: 0;
+    margin-top: 7px;
+}
+
+.placeholder-text {
+    font-size: 15px;
+    color: #999;
+}
+
+.searchBox {
+    outline: none;
+    border: solid 2px #266A31;
+    border-left: none;
+    border-radius: 0px 20px 20px 0px;
+    background-color: #fff;
+    padding: 0px 10px;
+    font-size: 15px;
+    height: 38px;
+}
+
+.searchIcon {
+    outline: none;
+    border: solid 2px #266A31;
+    border-right: none;
+    border-radius: 20px 0px 0px 20px;
+    background-color: #fff;
+    padding-left: 10px;
+    font-size: 22px;
+}
+
+select {
+    border: none;
+    outline: none;
+}
+
+#showTable {
+    margin: 0;
+    padding: 0;
+    background-color: #8CBC68;
+}
+
+#showTable_wrapper {
+    width: 100%;
+}
+
+.textArea:focus {
+    box-shadow: none;
+    z-index: 3;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.userLabel {
+    width: 250px;
+    background-color: rgb(60, 173, 79);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    color: white;
+}
+
+/* Navigation bar ---------------------------------------------------------------------------------------------- */
+#naviBar {
+    position: fixed;
+    z-index: 2;
+}
+
+.naviIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100%;
+    color: #fff;
+    padding: 0;
+}
+
+.naviBarItem {
+    color: white;
+    margin: 8px;
+    font-weight: 500;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Test colors */
+.bg1 {
+    background-color: rgb(32, 83, 178);
+}
+
+.bg2 {
+    background-color: rgb(223, 204, 33);
+}
+
+.bg3 {
+    background-color: rgb(236, 36, 36);
+}
+
+.bg4 {
+    background-color: rgb(49, 178, 32);
+}

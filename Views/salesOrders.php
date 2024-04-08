@@ -8,140 +8,114 @@ require '../include/auth.php';
 
 
 
+<body>
 
+	<!-- Wrapper -->
+	<div class="wrapper">
 
-<div class="wrapper">
+		<!-- Sidebar -->
+		<nav class="sidebar">
 
-    <!-- Sidebar -->
-    <nav class="sidebar">
+			<!-- close sidebar menu -->
 
-        <!-- close sidebar menu -->
+			<div class="m-1">
+				<h3></h3>
+			</div>
 
-        <div class="m-1">
-            <h3></h3>
-        </div>
+			<ul class="list-unstyled menu-elements">
+				<li class="">
+					<h4 class="ml-4">Menu</h4>
+					<div class="dismiss">
+						<i class="fas fa-times"></i>
+					</div>
 
-        <ul class="list-unstyled menu-elements">
-            <li class="">
-                <h4 class="ml-4">Menu</h4>
-                <div class="dismiss">
-                    <i class="fas fa-times"></i>
-                </div>
+				</li>
+				<li>
+					<a href="#EM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
+						aria-controls="EM">
+						<i class="fas fa-user-plus"></i>Employee Master
+					</a>
+					<ul class="collapse list-unstyled" id="EM">
+						<li>
+							<a href="Create Employee.html">Create Employee</a>
+						</li>
+						<li>
+							<a href="Search Employee.html">Search Employee</a>
+						</li>
+						<li>
+							<a href="Manage Employee.html">Manage Employee</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#CM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
+						aria-controls="CM">
+						<i class="fas fa-calculator"></i>Item Master
+					</a>
+					<ul class="collapse list-unstyled" id="CM">
+						<li>
+							<a href="Items.html">Items</a>
+						</li>
+						<li>
+							<a href="Payments.html">Payments</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#SM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
+						aria-controls="SM">
+						<i class="fas fa-receipt"></i>Sales Management
+					</a>
+					<ul class="collapse list-unstyled" id="SM">
+						<li>
+							<a href="Create Sale Order.html">Create Sale Order</a>
+						</li>
+						<li>
+							<a href="Search Sale Orders.html">Search Sale Orders</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#rPort" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
+						aria-controls="rPort">
+						<i class="fas fa-file"></i>Reports
+					</a>
+					<ul class="collapse list-unstyled" id="rPort">
+						<li>
+							<a href="Create Sale Order.html">Create Sale Order</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#sendSMS" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+						role="button" aria-controls="sendSMS">
+						<i class="fas fa-user"></i>Send SMS
+					</a>
+					<ul class="collapse list-unstyled" id="sendSMS">
+						<li>
+							<a href="SMS by UserID.html">SMS by UserID</a>
+						</li>
+						<li>
+							<a href="SMS by Mobile No.html">SMS by Mobile No.</a>
+						</li>
+						<li>
+							<a href="Push Notification.html">Push Notification</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
 
-            </li>
-            <li>
-                <a href="#EM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="EM">
-                    <i class="fas fa-user-plus"></i>Employee Master
-                </a>
-                <ul class="collapse list-unstyled" id="EM">
-                    <li>
-                        <a href="Create Employee.html">Create Employee</a>
-                    </li>
-                    <li>
-                        <a href="Search Employee.html">Search Employee</a>
-                    </li>
-                    <li>
-                        <a href="Manage Employee.html">Manage Employee</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#CM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="CM">
-                    <i class="fas fa-calculator"></i>Item Master
-                </a>
-                <ul class="collapse list-unstyled" id="CM">
-                    <li>
-                        <a href="Items.html">Items</a>
-                    </li>
-                    <li>
-                        <a href="Payments.html">Payments</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#SM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="SM">
-                    <i class="fas fa-receipt"></i>Sales Management
-                </a>
-                <ul class="collapse list-unstyled" id="SM">
-                    <li>
-                        <a href="Create Sale Order.html">Create Sale Order</a>
-                    </li>
-                    <li>
-                        <a href="Search Sale Orders.html">Search Sale Orders</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#rPort" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="rPort">
-                    <i class="fas fa-file"></i>Reports
-                </a>
-                <ul class="collapse list-unstyled" id="rPort">
-                    <li>
-                        <a href="Create Sale Order.html">Create Sale Order</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#sendSMS" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="sendSMS">
-                    <i class="fas fa-user"></i>Send SMS
-                </a>
-                <ul class="collapse list-unstyled" id="sendSMS">
-                    <li>
-                        <a href="SMS by UserID.html">SMS by UserID</a>
-                    </li>
-                    <li>
-                        <a href="SMS by Mobile No.html">SMS by Mobile No.</a>
-                    </li>
-                    <li>
-                        <a href="Push Notification.html">Push Notification</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+		</nav>
+		<!-- End sidebar -->
 
-    </nav>
-    <div class="overlay"></div>
-    <div class="content">
-        <nav id="naviBar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-            <div class="container-fluid">
-                <i class="fas fa-angle-double-right fa-sm mr-3 text-light open-menu" style="cursor:pointer;"></i>
-                <span class="comName">Dashboard</span>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="fas fa-user"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="naviIcon">
-                        </li>
-                        <li class="naviIcon">
-                            <i class="fa fa-calendar fa-lg mr-2" style="font-size: 18px;"></i>
-                            <span id="currentDate" class="bd-highlight align-self-center">[Current date]</span>
-                        </li>
-                        <li class="naviIcon ml-2">
-                            <div class="mr-2 ml-2">
-                                <div>
-                                    <span style="font-size: 15px;">Marley Botosh</span>
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <span style="font-size: 11px;">Administrator</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="dropdown naviIcon ml-2">
-                            <a class="noUnderline dropdown-toggle d-flex align-items-center ml-2" href="#" id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user-circle" style="font-size: 23px;"></i>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                    <a class="dropdown-item" href="#">Logout</a>
-                                </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+		<!-- Dark overlay -->
+		<div class="overlay"></div>
 
-    </div>
+		<!-- Content -->
+		<div class="content">
 
-    <form>
+			
+		<form>
         <div class="first-content">
             <div class="container-fluid">
                 <div class="row pt-5 pl-3 pr-3">
@@ -519,3 +493,284 @@ require '../include/auth.php';
         // Rest of your code...
     });
 </script>
+	
+<script>
+    $(document).ready(function() {
+        var empData = []; // Array to hold employee data
+
+        // AJAX call to fetch employee data
+        $.ajax({
+            type: 'GET',
+            url: '../salesOrder/orderConfig.php',
+            data: {
+                action: 'empdata'
+            },
+            // contentType: 'application/json',
+            success: function(data) {
+                if (data.status === "success") {
+                    empData = data.data; // Store the employee data
+                    $('#getempdata').append($('<option>', {
+                        value: '',
+                        text: '',
+                        disabled: true, // disable the placeholder option
+                        hidden: true, // hide the placeholder option
+                        selected: true // make it the selected option
+                    }));
+                    empData.forEach(function(item) {
+                        $('#getempdata').append(new Option(item.employee_no, item.id));
+                    });
+
+                    // Initialize Select2
+                    $('#getempdata').select2({
+                        placeholder: "Select an Employee",
+                        allowClear: true
+                    });
+                } else {
+                    console.error("Data fetch failed with status:", data.status);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error in AJAX call:', textStatus, errorThrown);
+            }
+        });
+
+        // Event listener for when an employee is selected in the dropdown
+        $('#getempdata').on('select2:select', function(e) {
+            var selectedEmployeeId = $(this).val();
+
+            // Find the selected employee in the empData array
+            var selectedEmployee = empData.find(emp => emp.id == selectedEmployeeId);
+
+            if (selectedEmployee) {
+                // Populate the input fields
+                $('#contact-person').val(selectedEmployee.first_name); // Assuming 'first_name' is a property
+                $('#contact-no').val(selectedEmployee.phone_no);
+                $('#address').val(selectedEmployee.Address); // Assuming 'phone_no' is a property
+                // Assuming 'phone_no' is a property
+                // Populate other fields as necessary
+            }
+        });
+    });
+
+    var itemsData = []; // Array to hold items data for later use
+
+    // AJAX call to fetch items data
+    $.ajax({
+        type: 'GET',
+        url: '../salesOrder/orderConfig.php',
+        data: {
+            action: 'itemdata'
+        },
+        // contentType: 'application/json',
+        success: function(data) {
+            // Parse the JSON response
+
+            if (data.status === "success") {
+                itemsData = data.data; // Store the items data
+                $('#itemSelect').append($('<option>', {
+                    value: '',
+                    text: '', // no text needed as it's a hidden placeholder
+                    disabled: true, // disable the placeholder option
+                    hidden: true, // hide the placeholder option
+                    selected: true // make it the selected option
+                }));
+                itemsData.forEach(function(item) {
+                    $('#itemSelect').append(new Option(item.item_code, item.Item_id));
+                });
+
+                // Initialize Select2
+                $('#itemSelect').select2({
+                    placeholder: "Select an item",
+                    allowClear: true
+                });
+            } else {
+                console.error("Data fetch failed with status:", data.status);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error in AJAX call:', textStatus, errorThrown);
+        }
+    });
+    $('#itemSelect').on('select2:select', function(e) {
+        var selectedItemId = $(this).val();
+        var selectedItem = itemsData.find(item => item.Item_id == selectedItemId);
+        if (selectedItem) {
+            $('#item-name').val(selectedItem.Item_name);
+            $('#item-price').val(selectedItem.price);
+            $('#selected-item-id').val(selectedItem.Item_id);
+
+            // Set the hidden input value
+        }
+    });
+
+
+
+    function updateTotal() {
+        var total = 0;
+        $('#mytable tbody tr').each(function() {
+            var amount = parseFloat($(this).find('td:nth-child(6)').text()); // Assuming the amount is in the 5th column
+            if (!isNaN(amount)) {
+                total += amount;
+            }
+        });
+        $('#totalAmount').text(total.toFixed(2));
+    }
+
+    $('#addMore').click(function(event) {
+        event.preventDefault();
+
+        // Retrieve values from the input fields and dropdown
+        var itemId = $('#selected-item-id').val(); // Get the hidden item ID
+        var itemCode = $('#itemSelect').find(':selected').text();
+        var itemName = $('#item-name').val();
+        var itemQuantity = $('#item-quantity').val();
+        var itemPrice = $('#item-price').val();
+        var itemAmount = parseFloat(itemPrice) * parseInt(itemQuantity);
+
+        // Append a new row to the table
+        $('#mytable tbody').append(
+            '<tr>' +
+            '<td  class="itemCode">' + itemId + '</td>' + // Include Item ID
+            '<td>' + itemCode + '</td>' +
+            '<td>' + itemName + '</td>' + // Include Item Name
+            '<td>' + itemPrice + '</td>' +
+            '<td class="itemQuantity">' + itemQuantity + '</td>' +
+            '<td>' + itemAmount.toFixed(2) + '</td>' +
+            '<td><button class="editRow">Remove</button></td>' + // Include Remove button
+            '</tr>'
+        );
+
+        updateTotal();
+        // Clear the input fields after adding
+        $('#item-name').val('');
+        $('#selected-item-id').val();
+        $('#itemSelect').val(null).trigger('change');
+        $('#item-price').val('');
+        $('#item-quantity').val('');
+        $('#mytable').on('click', '.editRow', function() {
+
+            // Find the closest tr parent element and remove it
+            $(this).closest('tr').remove();
+            updateTotal();
+        });
+
+    });
+
+    function sendOrderData(empId, date, total, orderData) {
+        $.ajax({
+            type: 'POST',
+            url: '../salesOrder/orderConfig.php', // Update with the correct path
+            data: {
+                action: 'submitOrder',
+                employeeId: empId,
+                orderDate: date,
+                totalearning: total,
+                orderData: orderData,
+
+
+            },
+            success: function(response) {
+                // Handle the response from the server
+                if (response.status === 'success') {
+                    alert('Order submitted successfully');
+                } else {
+                    console.error('Order submission failed:', response.message);
+                }
+                clearFormFields();
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors
+                console.error('Submission error:', error);
+            }
+        });
+    }
+
+    function clearFormFields() {
+        // Reset input fields
+        $('#item-name').val('');
+        $('#date').val('');
+        $('#item-quantity').val('');
+        $('#item-price').val('');
+        $('#totalAmount').text('0.00');
+
+        // Reset Select2 dropdowns
+        $('#getempdata').val(null).trigger('change');
+        $('#itemSelect').val(null).trigger('change');
+
+        // Clear the table
+        $('#mytable tbody').empty();
+
+        // Reset additional employee detail fields
+        $('#contact-person').val(''); // Clear contact person field
+        $('#contact-no').val(''); // Clear contact number field
+        $('#address').val('');
+
+        // Reset any other fields as necessary
+    }
+
+    $('#submitOrder').click(function(event) {
+        event.preventDefault();
+        var empId = $('#getempdata').val();
+        var date = $('#date').val();
+        var total = $('#totalAmount').text();
+        var orderData = [];
+        $('#mytable tbody tr').each(function() {
+            // var rowHtml = $(this).html(); // Log the HTML of the row
+            // console.log('Row HTML:', rowHtml); // This should show you the structure of the row being processed
+
+
+            var itemCode = $(this).find('.itemCode').text();
+            var itemQuantity = $(this).find('.itemQuantity').text();
+
+            if (itemCode !== '' && itemQuantity !== '') {
+                orderData.push({
+                    itemCode: itemCode,
+                    itemQuantity: itemQuantity
+                });
+            }
+
+        });
+        if (orderData.length > 0) {
+            console.log('Submitting order data:', empId, date, total, orderData);
+            sendOrderData(empId, date, total, orderData); // Pass both employee ID and order data to the function
+        } else {
+            console.log('No items to submit');
+        }
+        // Rest of your code...
+    });
+</script>		<!------------------------------------------------------------ Second Section End ------------------------------------------------------------>
+
+			<!-- Footer -->
+			<footer class="footer-container">
+
+		</div>
+	</div>
+
+	</footer>
+
+	</div>
+	<!-- End content -->
+
+	</div>
+	<!-- End wrapper -->
+
+	<!-- Javascript -->
+	<script src="assets/js/jquery-3.3.1.min.js"></script>
+	<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+	<script src="assets/js/myscript.js"></script>
+
+</body>
+
+</html>

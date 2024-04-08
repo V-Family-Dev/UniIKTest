@@ -10,14 +10,13 @@ header('Content-Type: application/json');
 
 
 
-$referralLevels = getReferralLevels("USC0024", $conn);
+if (isset($_GET['action']) && $_GET['action'] == 'getReferralLevels' && isset($_GET['empId'])) {
+    $empId = $_GET['empId'];
+    $referralLevels = getReferralLevels($empId, $conn);
 
-echo "Upward Referral Levels:\n";
-print_r($referralLevels['upward']);
-
-echo "Downward Referral Levels:\n";
-print_r($referralLevels['downward']);
-
+    // Return the result as JSON
+    echo json_encode($referralLevels);
+}
 $conn->close();
 
 ?>

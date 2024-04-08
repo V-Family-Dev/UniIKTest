@@ -1,15 +1,11 @@
 {
-    "name": "adithya/unikone-web",
+    "name": "uditha/uniiktest",
     "autoload": {
         "psr-4": {
-            "Adithya\\UnikoneWeb\\": "src/"
+            "Uditha\\Uniiktest\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "adithya bandara",
-            "email": "Dammikaekanayaka1980@gmail.com"
-        }
-    ],
-    "require": {}
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.29"
+    }
 }
