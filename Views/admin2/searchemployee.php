@@ -13,7 +13,7 @@ require "include/head.php";
 				<div class="row m-2">
 					<div class="input-group m-5 justify-content-center">
 						<div class="searchIcon fa fa-search d-flex align-items-center" style="width: 38px; height: 38px;"></div>
-						<input id="searchBox" type="search" class="searchBox cRound mr-2" placeholder="Search..." style="width: 30%;">
+						<input id="searchBox" id="example_filter" type="search" class="searchBox cRound mr-2" placeholder="Search..." style="width: 30%;">
 						<button id="searchBtn" class="btnInit btnGreen text-light" type="submit">
 							Search
 						</button>
@@ -45,8 +45,8 @@ require "include/head.php";
 							<th scope="col">Bank</th>
 							<th scope="col">Mobile 1</th>
 							<th scope="col">Details</th>
-							<th scope="col">Password</th>
 							<th scope="col">Inactive</th>
+							<th scope="col">Password</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -122,9 +122,9 @@ require "include/scriptlink.php";
 						row.append('<td>' + employee.District + '</td>'); // Assuming 'Province' is correct
 						row.append('<td>' + employee['Bank Name'] + '</td>'); // Assuming 'Bank' is correct
 						row.append('<td>' + employee['Mobile_Number'] + '</td>'); // Assuming 'Mobile1' is correct
-						row.append('<td><button data-empid="' + employee.empid + '" onclick="edit(this)">Edit</button></td>');
-						row.append('<td><button class="dpassword" data-empid="' + employee['Employee No'] + '">Delete</button></td>');
-						row.append('<td><button class="cpassword" data-empid="' + employee['Employee No'] + '">Password</button></td>');
+						row.append('<td><button class="btnTable btnYellow" data-empid="' + employee.empid + '" onclick="edit(this)">Edit</button></td>');
+						row.append('<td><button class="btnTable btnCream2" id="dpassword"class="dpassword" data-empid="' + employee['Employee No'] + '">Delete</button></td>');
+						row.append('<td><button class="btnTable btnRed" id="cpassword" data-empid="' + employee['Employee No'] + '">reset</button></td>');
 
 
 						table.append(row);
@@ -173,8 +173,8 @@ require "include/scriptlink.php";
 					row.append('<td>' + employee.City + '</td>');
 					row.append('<td>' + employee.District + '</td>');
 					row.append('<td>' + employee['Bank Name'] + '</td>');
-					row.append('<td><button class="activeuser" data-empid="' + employee['Employee No'] + '">Active</button></td>');
-					row.append('<td><button class="cdpassword" data-empid="' + employee['Employee No'] + '">Delete</button></td>');
+					row.append('<td><button class="activeuser"  data-empid="' + employee['Employee No'] + '">Active</button></td>');
+					row.append('<td><button class="cdpassword"id="cdpassword" data-empid="' + employee['Employee No'] + '">Delete</button></td>');
 					tbody.append(row);
 				});
 
@@ -250,7 +250,7 @@ require "include/scriptlink.php";
 			});
 		});
 
-		$(document).on('click', '.cdpassword', function(e) {
+		$(document).on('click', '#cdpassword', function(e) {
 			e.preventDefault();
 			var empid = $(this).data('empid');
 			console.log(empid);
@@ -295,8 +295,9 @@ require "include/scriptlink.php";
 </script>
 
 <script>
+	//dpassword  	cpassword
 	$(document).ready(function() {
-		$(document).on('click', '.cpassword', function() {
+		$(document).on('click', '#cpassword', function() {
 			var empid = $(this).data('empid');
 
 			Swal.fire({
@@ -348,11 +349,11 @@ require "include/scriptlink.php";
 
 <script>
 	$(document).ready(function() {
-		$(document).on('click', '.dpassword', function(e) { // Include 'e' as a parameter here
-			e.preventDefault(); // Now 'e' is defined
+		$(document).on('click', '#dpassword', function(e) {
+			e.preventDefault();
 			var empid = $(this).data('empid');
 			console.log(empid);
-			deleteEmployee(empid); // Corrected function name
+			deleteEmployee(empid);
 		});
 	});
 

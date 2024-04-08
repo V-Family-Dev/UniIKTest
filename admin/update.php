@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     $update->close();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'deleteUser') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'deleteUsernew') {
     $uderid = isset($_POST['id']) ? $_POST['id'] : '';
     if ($uderid == '') {
         echo json_encode(array('status' => 'error', 'message' => 'Invalid data'));
@@ -46,21 +46,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'activeuser') {
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'deactiveuser') {
     $uderid = isset($_POST['id']) ? $_POST['id'] : '';
     if ($uderid == '') {
         echo json_encode(array('status' => 'error', 'message' => 'Invalid data'));
         exit;
     }
-    $active = $conn->prepare("UPDATE `admin` SET `admin_status` = 1 WHERE `admin_id` = ?");
-    $active->bind_param("i", $uderid);
-    $result = $active->execute();
-    $active->close();
+    $deactive = $conn->prepare("DELETE FROM `admin` WHERE `admin_id`= ?");
+    $deactive->bind_param("i", $uderid);
+    $result = $deactive->execute();
+    $deactive->close();
 
     if ($result) {
-        echo json_encode(array('status' => 'success', 'message' => 'User activated successfully'));
+        echo json_encode(array('status' => 'success', 'message' => 'User Delete successfully'));
     } else {
-        echo json_encode(array('status' => 'error', 'message' => 'Failed to activate user'));
+        echo json_encode(array('status' => 'error', 'message' => 'Failed to deactivate user'));
     }
 }
 

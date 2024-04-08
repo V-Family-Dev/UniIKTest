@@ -30,11 +30,8 @@ require "include/head.php";
 
 				<div class="row pb-2 pt-2">
 
-					<div class="col-md-3">
-						<label for="empNumber" class="form-label">Employee Number</label>
-						<input class="inputBox" id="employee_no" type="text" readonly>
-					</div>
-					<div class="col-md-3">
+
+					<div class="col-md-4">
 						<label for="refNumber" class="form-label">Reference Number</label>
 						<div class="inputBox">
 							<select class="inputBox" id="reference_id">
@@ -43,11 +40,11 @@ require "include/head.php";
 							</select>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<label for="priMobile" class="form-label">Primary Mobile Number</label>
 						<input class="inputBox" id="phone_no" name="phone_no" type="text" placeholder="+94  Primary Mobile Number">
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<label for="secMobile" class="form-label">Whastapp Mobile Number</label>
 						<input class="inputBox" id="whatsapp_no" name="whatsapp_no" type="text" placeholder="+94  Whastapp Mobile Number">
 					</div>
@@ -185,6 +182,10 @@ require "include/head.php";
 <?php
 require "../../include/script.php";
 ?>
+<?php
+require "include/scriptlink.php";
+?>
+
 <script>
 	$(document).ready(function() {
 		$("#clearBtn").click(function(e) {
@@ -216,57 +217,54 @@ require "../../include/script.php";
 
 <script>
 	$(document).ready(function() {
-		$("#add_empw").click(function(e) {
+		$("#add_empws").click(function(e) {
 			e.preventDefault();
-			var firstname = $("#first_name").val();
-			var lastname = $("#last_name").val();
-			var nic = $("#nic").val();
-			var employeeno = $("#employee_no").val();
-			var referenceid = $("#reference_id").val();
-			var phoneno = $("#phone_no").val();
-			var whatsappno = $("#whatsapp_no").val();
+			first_name: $('#first_name').val();
+			last_name: $('#last_name').val();
+			nic: $('#nic').val();
+			reference_id: $('#reference_id').val();
+			phone_no: $('#phone_no').val();
+			whatsapp_no: $('#whatsapp_no').val();
+			address: $('#address').val();
+			province: $('#province').val();
+			districts: $('#districtsdata').val();
+			city: $('#citydata').val();
+			postalCode: $('#postalCode').val();
+			bankName: $('#bankSelect').val();
+			bankCode: $('#bankCode').val();
+			branchName: $('#branchselect').val();
+			branchCode: $('#branchCode').val();
+			accountHolderName: $('#accountHolderName').val();
+			AccountNum: $('#AccountNum').val();
 
-			var province = $("#province").val();
-			var district = $("#districtsdata").val();
-			var city = $("#citydata").val();
-			var postalcode = $("#postalCode").val();
-			var bankname = $("#bankSelect").val();
-			var bankCode = $("#bankSelect").val();
-			var branchname = $("#branchselect").val();
-			var branchcode = $("#branchCode").val();
-			var accountholdername = $("#accountHolderName").val();
-			var accountnum = $("#AccountNum").val();
-			//convert the form data into a FormData object
-			var formData = new FormData();
-			formData.append('first_name', firstname);
-			formData.append('last_name', lastname);
-			formData.append('nic', nic);
-			formData.append('employee_no', employeeno);
-			formData.append('reference_id', referenceid);
-			formData.append('phone_no', phoneno);
-			formData.append('whatsapp_no', whatsappno);
-			console.log($('#address').val());
-			formData.append('address', $('#address').val());
-			formData.append('province', province);
-			formData.append('district', district);
-			formData.append('city', city);
-			formData.append('postalCode', postalcode);
-			formData.append('bankSelect', bankname);
-			formData.append('bankCode', bankCode);
-			formData.append('branchselect', branchname);
-			formData.append('branchCode', branchcode);
-			formData.append('accountHolderName', accountholdername);
-			formData.append('AccountNum', accountnum);
 
-			console.log(formData);
 			$.ajax({
 				url: "../../employees/insertdata/inemployee.php",
 				type: "POST",
-				data: formData,
+				data: {
+					first_name: first_name,
+					last_name: last_name,
+					nic: nic,
+					reference_id: reference_id,
+					phone_no: phone_no,
+					whatsapp_no: whatsapp_no,
+					address: address,
+					province: province,
+					districts: districts,
+					city: city,
+					postalCode: postalCode,
+					bankName: bankName,
+					bankCode: bankCode,
+					branchName: branchName,
+					branchCode: branchCode,
+					accountHolderName: accountHolderName,
+					AccountNum: AccountNum
+				},
 				processData: false,
 				contentType: false,
 				success: function(data) {
 					console.log(data);
+
 					Swal.fire({
 						title: 'Success!',
 						text: 'Employee added successfully',
@@ -287,10 +285,79 @@ require "../../include/script.php";
 		});
 	});
 </script>
+<script>
+	$(document).ready(function() {
+		$("#add_empw").click(function(e) {
+			e.preventDefault();
 
-<?php
-require "include/scriptlink.php";
-?>
+			var formData = {
+				first_name: $('#first_name').val(),
+				last_name: $('#last_name').val(),
+				nic: $('#nic').val(),
+				reference_id: $('#reference_id').val(),
+				phone_no: $('#phone_no').val(),
+				whatsapp_no: $('#whatsapp_no').val(),
+				address: $('#address').val(),
+				postalCode: $('#postalCode').val(),
+				bankCode: $('#bankCode').val(),
+				branchCode: $('#branchCode').val(),
+				accountHolderName: $('#accountHolderName').val(),
+				AccountNum: $('#AccountNum').val()
+			};
+			console.log(formData);
+			Swal.fire({
+				title: 'Processing...',
+				text: 'Please wait while the employee is being updated',
+				icon: 'info',
+				allowOutsideClick: false,
+				showConfirmButton: false,
+				willOpen: () => {
+					Swal.showLoading();
+				}
+			});
+
+			$.ajax({
+				url: "../../employees/insertdata/inemployee.php",
+				type: "POST",
+				data: formData,
+				success: function(response) {
+					
+					if (response.status === "success") {
+						Swal.fire({
+							title: 'Success!',
+							text: 'Employee updated successfully',
+							icon: 'success',
+							confirmButtonText: 'OK'
+						}).then((result) => {
+							if (result.isConfirmed) {
+								// Redirect or other action
+							}
+						});
+					} else {
+						Swal.fire({
+							title: 'Update Failed',
+							text: response.message || 'The update process failed',
+							icon: 'error',
+							confirmButtonText: 'OK'
+						});
+						if (response.error) {
+							console.error("Error details:", response.error);
+						}
+					}
+				},
+				error: function(xhr, status, error) {
+					Swal.fire({
+						title: 'Error!',
+						text: 'There was an error adding the Employee',
+						icon: 'error',
+						confirmButtonText: 'OK'
+					});
+				}
+			});
+		});
+	});
+</script>
+
 
 
 </body>

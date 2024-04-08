@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "msg_id": "2",
+        "phone_no": "56546546",
+        "title": "Create account",
+        "message": "congratulations!\nusername \npassword",
+        "type": "employeeID"
+    },
+    {
+        "id": 2,
+        "msg_id": "2",
+        "phone_no": "455435",
+        "title": "Create account",
+        "message": "congratulations!\nusername \npassword",
+        "type": "employeeID"
+    },
+    {
+        "id": 3,
+        "msg_id": "2",
+        "phone_no": "455435",
+        "title": "Create account",
+        "message": "congratulations!\nusername \npassword",
+        "type": "employeeID"
+    },
+    {
+        "id": 4,
+        "msg_id": "2",
+        "phone_no": "6765765",
+        "title": "Create account",
+        "message": "congratulations!\nusername \npassword",
+        "type": "employeeID"
+    }
+]

@@ -5,9 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../admin2/assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../admin2/assets/css/loginStyle.css">
-  <link rel="stylesheet" href="../admin2/assets/css/">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/loginStyle.css">
 
   <title>Login</title>
 </head>
@@ -21,7 +20,7 @@
 
             <div class="col-md-6 order-md-2 d-flex align-items-center justify-content-center">
               <div class="contentImg">
-                <img src="../admin2/assets/img/Logo.png" width="40%" alt="Image" class="img-fluid">
+                <img src="assets/img/Logo.png" width="40%" alt="Image" class="img-fluid">
                 <h2 class="logoName"><strong>UNIKONE SOLUTIONS</strong></h2>
               </div>
             </div>
@@ -36,13 +35,13 @@
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                       <label class="form-label mb-0" for="form1Example13" style="font-size: 14px;">Email address</label>
-                      <input type="text" name="login-username" id="login-username" class="form-control form-control-lg" style="border-radius: 30px;" />
+                      <input type="email" id="form1Example13" class="form-control form-control-lg" style="border-radius: 30px;" />
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                       <label class="form-label mb-0" for="form1Example23" style="font-size: 14px;">Password</label>
-                      <input type="password" name="login-password" id="login-password" class="form-control form-control-lg" style="border-radius: 30px;" />
+                      <input type="password" id="form1Example23" class="form-control form-control-lg" style="border-radius: 30px;" />
                     </div>
 
                     <div class="d-flex justify-content-start align-items-center mb-4">
@@ -53,7 +52,7 @@
                       </div>
                     </div>
                     <!-- Submit button -->
-                    <input type="submit" value="Log In" name="login" class="btn btn-primary btn-lg btn-block">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
                   </form>
                 </div>
               </div>
@@ -66,7 +65,7 @@
   </div>
 </body>
 <?php
-require "../admin2/include/scriptlink.php";
+require "include/scriptlink.php";
 ?>
 
 <script>

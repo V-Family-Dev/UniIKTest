@@ -40,20 +40,16 @@ if (isset($_GET['empid']) && !empty($_GET['empid'])) {
 
 					<div class="row pb-2 pt-2">
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<label for="empNumber" class="form-label">Employee Number</label>
 							<input class="inputBox" id="employee_no" name="employee_no" type="text" readonly>
 						</div>
-						<div class="col-md-3">
-							<label for="reference_id" class="form-label">Primary Mobile Number</label>
-							<input class="inputBox" id="reference_id" name="reference_id" type="text" aria-readonly="">
 
-						</div>
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<label for="priMobile" class="form-label">Primary Mobile Number</label>
 							<input class="inputBox" id="phone_no" name="phone_no" type="text" placeholder="+94  Primary Mobile Number">
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<label for="secMobile" class="form-label">Whastapp Mobile Number</label>
 							<input class="inputBox" id="whatsapp_no" name="whatsapp_no" type="text" placeholder="+94  whastapp Mobile Number">
 						</div>
@@ -226,7 +222,8 @@ require "include/scriptlink.php";
 				$('#last_name').val(emp[0]['Last Name']);
 				$('#nic').val(emp[0].NIC);
 				$('#employee_no').val(emp[0]['Employee No']);
-				$('#phone_no').val(emp[0]['Phone Number']);
+				$('#phone_no').val(emp[0]['phone_no']);
+				console.log(emp[0]['phone_no']);
 				$('#whatsapp_no').val(emp[0]['WhatsApp Number']);
 				$('#address').val(emp[0].Address);
 				$('#postalCode').val(emp[0]['Postal Code']);
@@ -458,8 +455,7 @@ require "include/scriptlink.php";
 			console.log(empdata);
 			var address = $('#address').val();
 			var bankcode = $('#bankcode').val();
-			console.log(address);
-			console.log(bankcode);
+
 
 
 			// Show processing dialog

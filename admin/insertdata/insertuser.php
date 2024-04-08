@@ -2,6 +2,8 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include '../../DB/dbconfig.php';
+
+    header('Content-Type: application/json');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Retrieve data from POST request
         $username = $_POST['username'] ?? '';

@@ -23,7 +23,7 @@
                       var citySelect = $("#districtsdata");
                       citySelect.empty();
 
-                      citySelect.append('<option value="">Select a City</option>');
+                      citySelect.append('<option value="">Select a District</option>');
 
                       for (var i = 0; i < data.length; i++) {
                           var city = data[i];
@@ -100,6 +100,9 @@
 
           $("#bankSelect").change(function() {
               var bankID = $("#bankSelect").val();
+              var addbankCode = $("#bankCode");
+              addbankCode.val(bankID);
+
               //console.log(bankID);
 
               $.ajax({

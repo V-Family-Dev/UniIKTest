@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Send SMS - UNIKONE SOLUTION</title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/media-queries.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+	<link rel="stylesheet" href="assets/css/mycss.css">
+
+</head>
+
+
+
+
+
+<!------------------------------------------------------------ First Content Start ------------------------------------------------------------>
+<div class="first-content">
+	<div class="container-fluid">
+		<div class="row pt-5 pl-3 pr-3 mb-3">
+			<h5 class="mb-1">Send SMS</h5>
+			<!-- Section rectangle inside -->
+			<div class="col-12 backTheam cRound pb-4">
+				<div class="row">
+					<div class="input-group justify-content-end p-2">
+						<input id="noticeBox" type="notice" class="noticeBox cRound text-center" style="width: 30%;"
+							placeholder="Message Count" readonly>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-5 p-5 m-2 cRound" style="background-color: #dedede;">
+						<div class="row justify-content-center">
+							<div class="col-4">
+								<div class="row justify-content-center">
+									<input type="radio" id="option1" name="options" value="option1">
+									<label for="option1" class="ml-2">By Phone Number</label>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="row justify-content-center">
+									<input type="radio" id="option1" name="options" value="option1">
+									<label for="option1" class="ml-2">By Employee ID</label>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-4">
+							<h6>Custom Phone Numbers</h6><!-- 
+									<label for="address" class="form-label">Address</label> -->
+							<div class="input-group">
+								<textarea id="address" name="address" class="form-control textArea" rows="2" cols="50"
+									style="width: calc(100% - 2rem);"></textarea>
+								<button type="button" id="addNumbersButton" class="btn btn-success mt-2">Add
+									Numbers</button>
+							</div>
+						</div>
+
+
+						<!-- File Upload Form -->
+						<form id="fileUploadForm" class="mb-3">
+							<div class="form-group">
+								<h6 class="mt-4 text-center">Upload Excel File</h6>
+								<input type="file" class="form-control-file" id="inputFile" accept=".xlsx, .xls"
+									multiple>
+							</div>
+
+							<div class="mt-4" style="max-height: 200px; overflow-y: auto;">
+								<h6 id="teleMsg"></h6>
+								<ul id="fileUploadList" class="list-group">
+									<!-- Telephone numbers will be appended here -->
+								</ul>
+							</div>
+
+							<button type="button" class="btn btn-primary btn-block mt-2"
+								id="uploadButton">Upload</button>
+						</form>
+					</div>
+
+					<div class="col-5 p-5 m-2 cRound" style="background-color: rgb(223, 222, 222);">
+						<div class="row">
+							<div class="col-12">
+								<label for="msgList" class="form-label">Select Message</label>
+								<div class="inputBox">
+									<select class="inputBox" id="msgList">
+										<option value="" selected>Select Message</option>
+										<option value="Message 1">Message 1</option>
+										<option value="Message 2">Message 2</option>
+										<option value="Message 3">Message 3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-12">
+								<label for="msgTitle" class="form-label">Message Title</label>
+								<input class="inputBox" id="secMobile" type="text"
+									placeholder="Edit message title here...">
+							</div>
+						</div>
+
+						<!-- SMS Message Section -->
+						<div class="mt-4">
+							<h6>Compose SMS Message</h6>
+							<textarea id="smsMessage" class="form-control textArea" rows="3"
+								placeholder="Enter your message here..."></textarea>
+							<button type="button" class="btn btn-success mt-2" id="sendSMSButton">Send SMS</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!------------------------------------------------------------ First Content End ------------------------------------------------------------>
+</div>
+<!-- End content -->
+</div>
+<!-- End wrapper -->
+
+<!-- Javascript -->
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<script src="assets/js/jquery.backstretch.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/jquery.waypoints.min.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+<script src="assets/js/myscript.js"></script>
+<script src="assets/js/fileUpload.js"></script>
+
+</body>
+
+</html>

@@ -2,6 +2,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    
 
     <!-- Javascript -->
     <script src="assets/js/jquery-migrate-3.0.0.min.js"></script>

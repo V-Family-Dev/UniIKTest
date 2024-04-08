@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Create Sale Order - UNIKONE SOLUTION</title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/media-queries.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+	<link rel="stylesheet" href="assets/css/mycss.css">
+
+</head>
+
+<body>
+
+	<!-- Wrapper -->
+	<div class="wrapper">
+
+		<!-- Sidebar -->
+		<nav class="sidebar">
+
+			<!-- close sidebar menu -->
+
+			<div class="m-1">
+				<h3></h3>
+			</div>
+
+			<ul class="list-unstyled menu-elements">
+				<li class="">
+					<h4 class="ml-4">Menu</h4>
+					<div class="dismiss">
+						<i class="fas fa-times"></i>
+					</div>
+
+				</li>
+				<li>
+					<a href="#EM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
+						aria-controls="EM">
+						<i class="fas fa-user-plus"></i>Employee Master
+					</a>
+					<ul class="collapse list-unstyled" id="EM">
+						<li>
+							<a href="Create Employee.html">Create Employee</a>
+						</li>
+						<li>
+							<a href="Search Employee.html">Search Employee</a>
+						</li>
+						<li>
+							<a href="Manage Employee.html">Manage Employee</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#CM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
+						aria-controls="CM">
+						<i class="fas fa-calculator"></i>Item Master
+					</a>
+					<ul class="collapse list-unstyled" id="CM">
+						<li>
+							<a href="Items.html">Items</a>
+						</li>
+						<li>
+							<a href="Payments.html">Payments</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#SM" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
+						aria-controls="SM">
+						<i class="fas fa-receipt"></i>Sales Management
+					</a>
+					<ul class="collapse list-unstyled" id="SM">
+						<li>
+							<a href="Create Sale Order.html">Create Sale Order</a>
+						</li>
+						<li>
+							<a href="Search Sale Orders.html">Search Sale Orders</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#rPort" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button"
+						aria-controls="rPort">
+						<i class="fas fa-file"></i>Reports
+					</a>
+					<ul class="collapse list-unstyled" id="rPort">
+						<li>
+							<a href="#">Create Sale Order</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#messages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+						role="button" aria-controls="messages">
+						<i class="fas fa-envelope"></i>Messages
+					</a>
+					<ul class="collapse list-unstyled" id="messages">
+						<li>
+							<a href="Send SMS.html">Send SMS</a>
+						</li>
+						<a href="Push Notification.html">Push Notification</a>
+					</ul>
+				</li>
+				<li>
+					<a href="UpgradeDowngrade.html"><i class="fa fa-sort "></i>Upgrade/Downgrade</a>
+				</li>
+			</ul>
+
+		</nav>
+		<!-- End sidebar -->
+
+		<!-- Dark overlay -->
+		<div class="overlay"></div>
+
+		<!-- Content -->
+		<div class="content">
+
+			<nav id="naviBar" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+				<div class="container-fluid">
+					<i class="fas fa-angle-double-right fa-sm mr-3 text-light open-menu" style="cursor:pointer;"></i>
+					<span class="comName">Dashboard</span>
+					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+						<span class="fas fa-user"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarCollapse">
+						<ul class="navbar-nav ml-auto">
+							<li class="naviIcon">
+							</li>
+							<li class="naviIcon">
+								<i class="fa fa-calendar fa-lg mr-2" style="font-size: 18px;"></i>
+								<span id="currentDate" class="bd-highlight align-self-center">[Current date]</span>
+							</li>
+							<li class="naviIcon ml-2">
+								<div class="mr-2 ml-2">
+									<div>
+										<span style="font-size: 15px;">Marley Botosh</span>
+									</div>
+									<div class="d-flex justify-content-center">
+										<span style="font-size: 11px;">Administrator</span>
+									</div>
+								</div>
+							</li>
+							<li class="dropdown naviIcon ml-2">
+								<a class="noUnderline dropdown-toggle d-flex align-items-center ml-2" href="#"
+									id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									<i class="fa fa-user-circle" style="font-size: 23px;"></i>
+								</a>
+									<div class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="navbarDropdownProfile">
+										<a class="dropdown-item" href="#">Logout</a>
+									</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+			<!------------------------------------------------------------ First Content Start ------------------------------------------------------------>
+			<div class="first-content">
+				<div class="container-fluid">
+					<div class="row pt-5 pl-3 pr-3">
+
+						<h5 class="mb-1">Create Sale Order</h5>
+
+						<div class="col-12 backTheam cRound p-4">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="salesEmpID" class="form-label">Sales Employee ID</label>
+									<div class="inputBox">
+										<select class="inputBox" id="salesEmpID">
+											<option value="" selected disabled>Select Item Code</option>
+											<option value="Employee ID 1">Employee ID 1</option>
+											<option value="Employee ID 2">Employee ID 2</option>
+											<option value="Employee ID 3">Employee ID 3</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label for="contPerson" class="form-label">Contact Person</label>
+									<input type="text" class="inputBox" id="contPerson" name="contPerson"
+										placeholder="Contact Person" readonly>
+								</div>
+								<div class="col-md-4">
+									<label for="mobNumber" class="form-label">Mobile Number</label>
+									<input type="text" class="inputBox" id="mobNumber" name="mobNumber"
+										placeholder="Mobile Number" readonly>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label for="address" class="form-label">Address</label>
+									<div class="input-group">
+										<textarea id="address" name="address" class="form-control textArea" rows="3"
+											cols="50" style="width: calc(100% - 2rem);"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4">
+									<label for="saleDate" class="form-label">Sale Date</label>
+									<input type="date" class="inputBox" id="saleDate" name="saleDate">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!------------------------------------------------------------ First Content End ------------------------------------------------------------>
+
+			<!------------------------------------------------------------ Second Section Start ------------------------------------------------------------>
+
+			<div class="container-fluid">
+				<div class="row p-3">
+
+					<h5 class="mb-1">Sale Order Items</h5>
+
+					<div class="col-12 backTheam cRound p-4" style="background-color: rgb(223, 222, 222);">
+						<div class="row">
+							<div class="col-md-3">
+								<label for="itemCode" class="form-label">Item Code</label>
+								<div class="inputBox">
+									<select class="inputBox" id="itemCode">
+										<option value="" selected disabled>Select Item Code</option>
+										<option value="Item Code 1">Item Code 1</option>
+										<option value="Item Code 2">Item Code 2</option>
+										<option value="Item Code 3">Item Code 3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label for="itemName" class="form-label">Item Name</label>
+								<div class="inputBox">
+									<select class="inputBox" id="itemName">
+										<option value="" selected disabled>Select Item Name</option>
+										<option value="Item Name 1">Item Name 1</option>
+										<option value="Item Name 2">Item Name 2</option>
+										<option value="Item Name 3">Item Name 3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<label for="price" class="form-label">Price</label>
+								<input type="text" class="inputBox" id="price" name="price" placeholder="Price">
+							</div>
+							<div class="col-md-3">
+								<label for="quantity" class="form-label">Quantity</label>
+								<input type="text" class="inputBox" id="quantity" name="quantity"
+									placeholder="Quantity">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col mt-4 d-flex justify-content-start">
+								<input class="btnInit btnGreen text-light" type="submit" id="addMore" name="Add more"
+									value="Add more">
+								<input class="btnInit btnCream2" type="submit" id="submit" name="Submit" value="Submit">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col mt-3">
+								<table id="showTable" class="table table-hover backTheam m-0">
+									<thead>
+										<tr style="background-color: #b4b3b3">
+											<th scope="col">Item ID</th>
+											<th scope="col">Item Code</th>
+											<th scope="col">Item Name</th>
+											<th scope="col">Unit Price</th>
+											<th scope="col">Quantity</th>
+											<th scope="col">Amount</th>
+											<th scope="col">Option</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="col">Item ID</td>
+											<td scope="col">Item Code</td>
+											<td scope="col">Item Name</td>
+											<td scope="col">Unit Price</td>
+											<td scope="col">Quantity</td>
+											<td scope="col">Amount</td>
+											<td>
+												<input id="removeBtn" class="btnRed btnTable" type="submit"
+													value="Remove">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="d-flex justify-content-end mr-5">
+									<div class="mr-5 pr-5">
+										<h4 style="color: rgb(212, 0, 0);">Total Amount: &emsp;</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!------------------------------------------------------------ Second Section End ------------------------------------------------------------>
+
+		</div>
+		<!-- End content -->
+
+	</div>
+	<!-- End wrapper -->
+
+	<!-- Javascript -->
+	<script src="assets/js/jquery-3.3.1.min.js"></script>
+	<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+	<script src="assets/js/myscript.js"></script>
+
+</body>
+
+</html>
