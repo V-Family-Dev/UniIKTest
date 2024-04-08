@@ -32,3 +32,26 @@ function getWalletWithEmployeeDetails($conn)
         return "Error: " . $conn->error;
     }
 }
+
+
+function updateWallet($total_earning, $Total_payed, $directcommision, $indirectcommision, $last_updated, $walletId, $conn) {
+    $sql = "UPDATE wallet SET 
+                total_earnings = ?, 
+                total_payed = ?, 
+                direct_commission = ?, 
+                indirect_commission = ?, 
+                LastPayementDate = ?
+            WHERE id = ?";
+
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("ddddsi", $total_earning, $Total_payed, $directcommision, $indirectcommision, $last_updated, $walletId);
+        $stmt->execute();
+        $result = $stmt->affected_rows; // Get the number of affected rows
+        $stmt->close();
+
+        return $result > 0;
+    } else {
+        // Optional: Handle error in preparation of statement
+        return false;
+    }
+}

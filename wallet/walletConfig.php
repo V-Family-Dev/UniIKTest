@@ -3,6 +3,7 @@
 
 
 require_once '../functions/sales/upDownFunction.php';
+require_once '../functions/wallet/walletFunctions.php';
 require_once '../DB/dbconfig.php';
 require "../vendor/autoload.php";
 
@@ -75,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $updateResult = updateOrder($soId, $deliveryDate, $returnDate, $conn);
         if ($updateResult == 1) {
             $result = processOrder($soId, $conn);
+            $response['message'] = 'success update';
         } else {
             $response['status'] = 'error';
             $response['message'] = 'Error updating order';  

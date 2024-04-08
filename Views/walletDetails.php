@@ -240,4 +240,22 @@ require '../include/auth.php';
 
 
         });
+
+        $('#uploadButton').click(function() {
+				var formData = new FormData();
+				var fileInput = $('#fileToUpload')[0];
+				formData.append('fileToUpload', fileInput.files[0]);
+
+				$.ajax({
+					url: '../wallet/walletDetailsConfig.php', // Server-side script
+					type: 'POST',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function(response) {
+						$('#uploadStatus').html(response);
+					}
+				});
+			});
+
     </script>
