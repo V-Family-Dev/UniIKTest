@@ -105,6 +105,7 @@ function processOrder($soId, $conn)
         $empId = $task[0]['employee_no'];
         $referralLevels = getReferralLevels($empId, $conn);
         $totalEarnings = calculateEarnings($empId, $task, $referralLevels['upward']);
+        storeEarningsWithLevels($conn, $soId, $totalEarnings, $referralLevels['upward'], $empId);
         updateWallet($totalEarnings, $conn);
         $response['status'] = 'success';
         $response['data'] = $totalEarnings;

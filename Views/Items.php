@@ -19,8 +19,9 @@ require_once "../include/auth.php";
 	<link rel="stylesheet" href="assets/css/animate.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/media-queries.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+
 	<link rel="stylesheet" href="assets/css/mycss.css">
+	https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css
 
 </head>
 
@@ -351,7 +352,7 @@ require_once "../include/auth.php";
 										var buttonClass = item.item_status === 1 ? 'deactivateBtn' : 'activateBtn';
 										var newStatus = item.item_status === 1 ? 0 : 1;
 										tableContent += '<tr id="itemRow_' + item.Item_id + '">' +
-											
+
 											'<td>' + item.item_code + '</td>' +
 											'<td>' + item.Item_name + '</td>' +
 											'<td>' + item.price + '</td>' +
@@ -395,19 +396,25 @@ require_once "../include/auth.php";
 						},
 						success: function(response) {
 							if (response.status === "success") {
-								console.log("Operation successful:", response.message);
-								alert(response.message);
-								var rowToUpdate = $('#itemRow_' + id);
-								rowToUpdate.remove();
+								// Using SweetAlert for success message
+								Swal.fire({
+									title: 'Success!',
+									text: response.message,
+									icon: 'success',
+									confirmButtonText: 'OK'
+								}).then(() => {
+									var rowToUpdate = $('#itemRow_' + id);
+									rowToUpdate.remove();
+								});
 							} else {
-
-								console.log("Error:", response.message);
-								alert(response.message);
+								// Using SweetAlert for error message
+								Swal.fire({
+									title: 'Error!',
+									text: response.message,
+									icon: 'error',
+									confirmButtonText: 'OK'
+								});
 							}
-						},
-						error: function(jqXHR, textStatus, errorThrown) {
-
-
 						}
 					});
 				});

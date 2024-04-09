@@ -238,3 +238,34 @@ foreach ($totalEarnings as $empNo => $earnings) {
 }
 
 }
+
+function storeEarningsWithLevels($conn, $saleOrderId, $earningsArray, $levelArray, $empId) {
+    $sql = "INSERT INTO earning_history (so_id, emp_no, level, total_earning) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        die("Error in preparing statement: " . $conn->error);
+    }
+
+    $allSuccess = true; // Flag to track overall success
+
+    foreach ($earningsArray as $employeeId => $totalEarning) {
+        // Determine the level of the employee
+        $level = ($employeeId == $empId) ? 1 : (isset($levelArray[$employeeId]) ? $levelArray[$employeeId] : null);
+
+        // Bind parameters to the statement
+        $stmt->bind_param("isid", $saleOrderId, $employeeId, $level, $totalEarning);
+
+        // Execute the statement and check success
+        if (!$stmt->execute()) {
+            echo "Error inserting data for employee " . $employeeId . ": " . $stmt->error . "\n";
+            $allSuccess = false;
+        }
+    }
+
+    // Close the statement
+    $stmt->close();
+
+    // Return 1 if all inserts were successful, 0 otherwise
+    return $allSuccess ? 1 : 0;
+}

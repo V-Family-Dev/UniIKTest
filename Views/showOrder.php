@@ -153,7 +153,7 @@ require '../include/auth.php';
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid">
+	<div class="container-fluid mt-4">
 		<form id="fileUploadForm" enctype="multipart/form-data">
 			<input type="file" name="fileToUpload" id="fileToUpload">
 			<input type="button" value="Upload File" id="uploadButton">
@@ -175,8 +175,7 @@ require '../include/auth.php';
 								<th scope="col">Sale Date</th>
 								<th scope="col">Delivery Date</th>
 								<th scope="col">Return Date</th>
-								<th scope="col">Quantity</th>
-								<th scope="col">wallet</th>
+								<th scope="col">Quantity</th>							
 								<th scope="col">Options</th>
 								<th scope="col">Options</th>
 
@@ -259,8 +258,7 @@ require '../include/auth.php';
 					if (response.data.length > 0) {
 						// Loop through the response and append the data to the table
 						response.data.forEach(function(data) {
-							var walletLink = `<td ><a href="wallet.php?employee_no=${data.employee_no}" class="btn btn-primary">Wallet</a></td>`;
-
+						
 							$('#salesOrderTable').append(`
                                 <tr>
                                     <td>${data.so_id}</td>
@@ -272,7 +270,7 @@ require '../include/auth.php';
                                     <td>${data.delivery_date}</td>
                                     <td>${data.return_date}</td>                               
                                     <td>${data.quantity}</td>
-									${walletLink}
+									
                                     <td>
                                         <button class="btnTable btnBlack text-light" onclick="openPopup(${data.so_id})">Action</button>
                                     </td>

@@ -438,10 +438,25 @@ require '../include/auth.php';
             },
             success: function(response) {
                 // Handle the response from the server
-                if (response.status === 'success') {
-               
+                if (response.status === "success") {
+                    // Using SweetAlert for success message
+                    Swal.fire({
+                        title: 'Success!',
+                        text: response.message,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        var rowToUpdate = $('#itemRow_' + id);
+                        rowToUpdate.remove();
+                    });
                 } else {
-                   
+                    // Using SweetAlert for error message
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
                 }
                 clearFormFields();
             },
@@ -498,7 +513,7 @@ require '../include/auth.php';
 
         });
         if (orderData.length > 0) {
-       
+
             sendOrderData(empId, date, total, orderData); // Pass both employee ID and order data to the function
 
             // Optionally, show a SweetAlert message here if appropriate
