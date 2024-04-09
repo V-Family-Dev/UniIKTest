@@ -1,10 +1,3 @@
-<?php
-include 'include/head.php';
-
-//$empid = $_SESSION['emp_id'];
-$empid = 'USD0013';
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -82,18 +75,19 @@ $empid = 'USD0013';
 							</li>
 							<li class="naviIcon">
 								<i class="fa fa-calendar fa-lg mr-2" style="font-size: 18px;"></i>
-								<span id="currentDate" class="bd-highlight align-self-center"><?= date('Y - M - d') ?></span>
+								<span id="currentDate" class="bd-highlight align-self-center">[Current date]</span>
 							</li>
 							<!-- notification section -->
 							<li class="naviIcon ml-3" style="font-size: 100%;">
 								<a class="noUnderline mr-2 ml-2" href="#" onclick="showNotifications()">
 									<i class="fa fa-bell" style="font-size: 23px;" id="notificationIcon"></i>
-									<span id="howmany" class="badge rounded-pill badge-notification bg-danger">10</span>
+									<span class="badge rounded-pill badge-notification bg-danger">10</span>
 								</a>
-								<div id="notificationMessages" style="display: none; position: absolute; right: 10px; top: 50px; background-color: rgb(238, 237, 237); box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px; padding: 10px; border-radius: 5px; color: black; max-height: 400px; overflow-y: auto;">
-									<!-- Notification content will be dynamically inserted here -->
+								<div id="notificationMessages" style="display: none; position: absolute; right: 10px; top: 50px; background-color: rgb(238, 237, 237); box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 5px; width: 300px;color: black;">
+									<p>Message 1</p>
+									<p>Message 2</p>
+									<p>Message 3</p><!-- Notification content here -->
 								</div>
-
 							</li>
 							<li class="naviIcon ml-2">
 								<div class="mr-2 ml-2">
@@ -227,69 +221,29 @@ $empid = 'USD0013';
 		</div>
 	</div>
 
-
-	<?php include 'include/scriptlink.php'; ?>
 	<script>
-		// Function to show or hide the notification messages
-
-
-		$(document).ready(function() {
-			$('#notificationIcon').click(function(e) {
-				e.preventDefault(); // Prevent the default anchor action
-				showNotifications();
-
-			});
-			let empid = '<?= $empid ?>'; // Make sure this PHP variable is set
-
-			$.ajax({
-				url: '../../notification/get.php',
-				type: 'POST',
-				dataType: 'json', // Expecting JSON response
-				data: {
-					empid: empid,
-					action: "getNotification"
-				},
-				success: function(data) {
-					console.log(data);
-					$('#howmany').text(data.howmany);
-
-
-					let notificationsContainer = $('#notificationMessages ');
-					notificationsContainer.empty();
-
-					if (data.notifications && data.notifications.length > 0) {
-						data.notifications.forEach(function(notification) {
-							for ($i = 0; $i < notification.quty; $i++) {
-								notificationsContainer.append($('<p>').text(notification.messenge));
-
-							}
-							console.log(notification.messenge);
-						});
-					} else {
-						notificationsContainer.append($('<p>').text('No new notifications'));
-					}
-				},
-				error: function(xhr, status, error) {
-					console.error("Error fetching notifications:", xhr.status, error);
-				}
-			});
-
-
-			function showNotifications() {
-				var messageBox = document.getElementById("notificationMessages");
-				if (messageBox.style.display === "none") {
-					messageBox.style.display = "block";
-				} else {
-					messageBox.style.display = "none";
-				}
+		function showNotifications() {
+			var messageBox = document.getElementById("notificationMessages");
+			if (messageBox.style.display === "none") {
+				messageBox.style.display = "block";
+			} else {
+				messageBox.style.display = "none";
 			}
-			// Set up the click event for the notification icon
-
-		});
+		}
 	</script>
 
-
-
+	<!-- Javascript -->
+	<script src="assets/js/jquery-3.3.1.min.js"></script>
+	<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+	<script src="assets/js/myscript.js"></script>
 
 </body>
 

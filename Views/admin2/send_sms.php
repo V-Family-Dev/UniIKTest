@@ -236,6 +236,13 @@
 						var jsonResponse = JSON.parse(response); // Parse the JSON response
 						if (jsonResponse.status === 'success') {
 							Swal.fire("Success", "Message sent successfully.", "success");
+
+							$('#fileUploadList').empty();
+							$('#message').val('');
+							$('#title').val('');
+							$('#massageid').val('');
+
+
 						} else {
 							Swal.fire("Error", "An error occurred while sending the message.", "error");
 						}
@@ -298,24 +305,12 @@
 	$(document).ready(function() {
 		$('#addNumbersButton').click(function() {
 			var input = $('#address').val().trim();
-			if (!input) {
-				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Please enter a phone number!',
-				});
-				exit;
-			}
-
 			var numbers = input.split(" ").filter(n => n);
-
 			numbers.forEach(function(number) {
-				console.log("Processing number:", number); // Debugging log
-				if (number.match(/^\d{10}$/) || number.match(/^\d{9}$/) || number.match(/^\+94\d{9}$/) || number.match(/^07\d{8}$/) || number.match(/^USC\d{4}$/) || number.match(/USD\d+/g)) {
+				if (number.match(/^\d{10}$/) || number.match(/^\d{9}$/) || number.match(/^\+94\d{9}$/) || number.match(/^07\d{8}$/) || number.match(/^USC\d{4}$/)) {
 					addNumberToList(number);
 				}
 			});
-
 			$('#address').val('');
 		});
 

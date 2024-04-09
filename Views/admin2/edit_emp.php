@@ -222,8 +222,7 @@ require "include/scriptlink.php";
 				$('#last_name').val(emp[0]['Last Name']);
 				$('#nic').val(emp[0].NIC);
 				$('#employee_no').val(emp[0]['Employee No']);
-				$('#phone_no').val(emp[0]['phone_no']);
-				console.log(emp[0]['phone_no']);
+				$('#phone_no').val(emp[0]['Phone Number']);
 				$('#whatsapp_no').val(emp[0]['WhatsApp Number']);
 				$('#address').val(emp[0].Address);
 				$('#postalCode').val(emp[0]['Postal Code']);
@@ -455,7 +454,8 @@ require "include/scriptlink.php";
 			console.log(empdata);
 			var address = $('#address').val();
 			var bankcode = $('#bankcode').val();
-
+			console.log(address);
+			console.log(bankcode);
 
 
 			// Show processing dialog

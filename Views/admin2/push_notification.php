@@ -319,6 +319,11 @@
 							title: 'Success',
 							text: 'Message sent successfully!',
 						});
+						$('#fileUploadList').empty();
+						$('#message').val('');
+						$('#title').val('');
+						$('#massageid').val('');
+
 					} else {
 						Swal.fire({
 							icon: 'error',
@@ -372,7 +377,7 @@
 			var input = $('#address').val().trim();
 			var numbers = input.split(" ").filter(n => n);
 			numbers.forEach(function(number) {
-				if (number.match(/^USC\d{4}$/) || number.match(/^USC\d{5}$/) || number.match(/USD\d+/g)) {
+				if (number.match(/^USC\d{4}$/) || number.match(/^USC\d{5}$/)) {
 					addNumberToList(number);
 				}
 			});

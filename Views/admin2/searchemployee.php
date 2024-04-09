@@ -13,7 +13,7 @@ require "include/head.php";
 				<div class="row m-2">
 					<div class="input-group m-5 justify-content-center">
 						<div class="searchIcon fa fa-search d-flex align-items-center" style="width: 38px; height: 38px;"></div>
-						<input id="searchBox" id="example_filter" type="search" class="searchBox cRound mr-2" placeholder="Search..." style="width: 30%;">
+						<input id="searchBox" type="search" class="searchBox cRound mr-2" placeholder="Search..." style="width: 30%;">
 						<button id="searchBtn" class="btnInit btnGreen text-light" type="submit">
 							Search
 						</button>
@@ -33,6 +33,7 @@ require "include/head.php";
 
 		<div class="col p-5 cRound" style="background-color: rgb(223, 222, 222);">
 			<div class="row justify-content-center">
+				<button id="inactive" onclick="inactiveuser()">Inactive</button>
 
 				<table id="showTable" class="table table-hover backTheam m-0">
 					<thead>
@@ -45,8 +46,8 @@ require "include/head.php";
 							<th scope="col">Bank</th>
 							<th scope="col">Mobile 1</th>
 							<th scope="col">Details</th>
-							<th scope="col">Inactive</th>
 							<th scope="col">Password</th>
+							<th scope="col">Inactive</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -124,7 +125,7 @@ require "include/scriptlink.php";
 						row.append('<td>' + employee['Mobile_Number'] + '</td>'); // Assuming 'Mobile1' is correct
 						row.append('<td><button class="btnTable btnYellow" data-empid="' + employee.empid + '" onclick="edit(this)">Edit</button></td>');
 						row.append('<td><button class="btnTable btnCream2" id="dpassword"class="dpassword" data-empid="' + employee['Employee No'] + '">Delete</button></td>');
-						row.append('<td><button class="btnTable btnRed" id="cpassword" data-empid="' + employee['Employee No'] + '">reset</button></td>');
+						row.append('<td><button class="btnTable btnRed" id="cpassword" data-empid="' + employee['Employee No'] + '">Password</button></td>');
 
 
 						table.append(row);
@@ -140,13 +141,11 @@ require "include/scriptlink.php";
 
 
 <script>
-	$(document).ready(function() {
-		$('#inactive').click(function() {
-			inactiveuser();
-		});
-	});
-
 	function inactiveuser() {
+		$('#inactive').css('display', 'none');
+
+		console.log("inactiveuser clicked");
+
 		$.ajax({
 			url: '../../employees/getdata/getemptable.php',
 			method: 'POST',
@@ -154,7 +153,8 @@ require "include/scriptlink.php";
 				action: 'inactive'
 			},
 			success: function(data) {
-				var table = $('#emp_s tbody');
+				var table = $('#showTable tbody');
+
 				var emp = JSON.parse(data);
 
 
@@ -177,6 +177,7 @@ require "include/scriptlink.php";
 					row.append('<td><button class="cdpassword"id="cdpassword" data-empid="' + employee['Employee No'] + '">Delete</button></td>');
 					tbody.append(row);
 				});
+
 
 				// Append tbody to table
 				table.append(tbody);
